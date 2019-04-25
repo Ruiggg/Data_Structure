@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1555931802 source:/home/qianyu/workspace/code/c/HuffmanCoding/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"Huffman.h"
+
+1555928623 /home/qianyu/workspace/code/c/HuffmanCoding/Predefined_const.h
+
+1555936130 /home/qianyu/workspace/code/c/HuffmanCoding/Huffman.h
+	"Predefined_const.h"
+
+1555936160 source:/home/qianyu/workspace/code/c/HuffmanCoding/Huffman_Op.c
+	<stdio.h>
+	<stdlib.h>
+	"Huffman.h"
+	"Predefined_const.h"
+	<string.h>
+

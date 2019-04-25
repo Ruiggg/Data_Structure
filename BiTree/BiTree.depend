@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1555938113 source:/home/qianyu/workspace/code/c/BiTree/BiTree_Op.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"BiTree.h"
+
+1555859305 /home/qianyu/workspace/code/c/BiTree/Predefined_const.h
+
+1555938133 /home/qianyu/workspace/code/c/BiTree/BiTree.h
+
+1555938185 source:/home/qianyu/workspace/code/c/BiTree/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"BiTree.h"
+
+1555864187 source:/home/qianyu/workspace/code/c/BiTree/StackInBiTree.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"BiTree.h"
+

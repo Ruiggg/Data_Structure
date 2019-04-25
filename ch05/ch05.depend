@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1554990821 source:/home/qianyu/workspace/code/c/ch05/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"SparseMatrix.h"
+
+1554997332 /home/qianyu/workspace/code/c/ch05/Predefined_const.h
+
+1554997314 /home/qianyu/workspace/code/c/ch05/SparseMatrix.h
+	"Predefined_const.h"
+
+1554990279 source:/home/qianyu/workspace/code/c/ch05/SparseMatrixOp.c
+	"SparseMatrix.h"
+	"Predefined_const.h"
+	<stdio.h>
+
+1555261996 source:/home/qianyu/workspace/code/c/ch05/OLMatrix_Op.c
+	"OLMatrix.h"
+	<stdio.h>
+
+1555261331 /home/qianyu/workspace/code/c/ch05/OLMatrix.h
+	"Predefined_const.h"
+	"stdlib.h"
+
+1555261441 source:/home/qianyu/workspace/code/c/ch05/test_OLMatrix.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"OLMatrix.h"
+
