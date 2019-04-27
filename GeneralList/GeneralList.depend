@@ -9,9 +9,18 @@
 
 1555334898 /home/qianyu/workspace/code/c/GeneralList/MPNode.h
 
-1555335815 source:/home/qianyu/workspace/code/c/GeneralList/MvarPoly.c
+1555336323 source:/home/qianyu/workspace/code/c/GeneralList/MvarPoly.c
 	"Predefined_const.h"
 	"MPNode.h"
 	<stdio.h>
 	<stdlib.h>
+
+1556384322 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_ht.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"GeneralList.h"
+
+1556384220 /home/qianyu/workspace/code/c/GeneralList/GeneralList.h
+	"MPNode.h"
 

@@ -36,7 +36,7 @@ int GListDepth(GList_th L){
     //if(L->tag==ATOM)    return 0;
     int max,dep;
     GList_th pp;
-    for(pp=L,max=0;pp;pp=pp->tp){
+    for(pp=L,max=0;pp;pp=pp->ptr.tp){
         dep = GListDepth(pp->ptr.hp);   //GetHead[GetTail(k)[L]] gets the k-1 th element/list in Glist
         if(dep>max) max = dep;
     }
@@ -53,8 +53,8 @@ Status CopyGlist_th(GList_th T,GList_th L){
             T=InitGlist_th(ATOM);
             T->atom = L->atom;
         }else{
-            CopyGlist_th(&(T->hp),L->hp);
-            CopyGlist_th(&(T->tp),L->tp);
+            CopyGlist_th(&(T->ptr.hp),L->ptr.hp);
+            CopyGlist_th(&(T->ptr.tp),L->ptr.tp);
         }
     }
     return OK;

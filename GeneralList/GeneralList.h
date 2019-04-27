@@ -2,6 +2,7 @@
 #define GENERALLIST_H_INCLUDED
 #define ATOM 0
 #define LIST 1
+#include "MPNode.h"
 
 typedef int Atomtype;   //int can be changed
 

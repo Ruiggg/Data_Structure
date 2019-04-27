@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "Predefined_const.h"
 #include "GeneralList.h"
-
+#include "MPNode.h"
 GList_l InitGlist_l(ElemTag t){
     GList_l p = (GList_l)malloc(sizeof(GLNode_l));
-    if(!GList_l) exit(OVERFLOW);
+    if(!p) exit(OVERFLOW);
     p->tag=t; p->tp=NULL;
-    if(ElemTag == ATOM)  p->atom=0;
+    if(t == ATOM)  p->atom=0;
     else  p->hp=p->tp=NULL;
     return p;
 }
