@@ -157,6 +157,7 @@ void InThreading(BiThrTree p, BiThrTree *pre){
 }
 
 Status InOrderTraverse_Thr(BiThrTree T,Status(*Visit)(TElemType e)){
+    //T: the head, not the root(=T->lchild)
     BiThrTree p;
     p = T->lchild;
     while(p!=T){
@@ -191,9 +192,57 @@ Status CreateThrBiTree(BiThrTree *T){
     return OK;
 }
 
+Status FindInOrderParent_Thr(BiThrTree T, BiThrNode ** parent, BiThrNode *p){
+    if(p==T)  {*parent=NULL; return ERROR;}
+    BiThrNode *ptr = p;
+    while(ptr->RTag == Link) ptr=ptr->rchild;
+    ptr = ptr->rchild;
+    if(ptr->lchild == p){*parent=ptr; return OK;}
+    ptr = p;
+    while(ptr->LTag == Link) ptr=ptr->lchild;
+    ptr = ptr->lchild;
+    if(ptr->rchild == p){*parent=ptr; return OK;}
+    printf("Error occurs while finding parents\n");
+    exit(OVERFLOW);
 
+    return OK;
+}
 
+Status FindPostOrderFirst_Thr(BiThrTree T, BiThrNode ** p){
+    //T the pointer to the root node, not the head
+    //no matter which kind of threaten it is
+    BiThrNode* pre,*ptr;
+    ptr = T; pre = NULL;
+    while(ptr->LTag == Link) ptr=ptr->lchild;
+    if(ptr->RTag == Thread) { *p = ptr; return OK;}
+    else    FindPostOrderFirst_Thr(ptr->rchild,p);
+    return OK;
+}
 
+Status FindPOScr_IOThr(BiThrTree T, BiThrNode * p,BiThrNode **successor){
+    //find post-order successor of p in an full InOrder_Thr_Tree
+    BiThrNode * parent;
+    FindInOrderParent_Thr(T,&parent,p);
+    if(!parent){ return ERROR;}
+    else if(parent->rchild == p) {*successor=parent; return OK;}
+    else if(parent->RTag==Thread) {*successor=parent; return OK;}
+    else{
+        FindPostOrderFirst_Thr(parent->rchild,successor);
+    }
+    return OK;
+}
+
+Status CheckFPOSIOT(BiThrTree T){
+    BiThrNode *succ=NULL;
+    BiThrNode *p;
+    FindPostOrderFirst_Thr(T,&p);
+    while(p->LTag == Link) p=p->lchild;
+    while(FindPOScr_IOThr(T,p,&succ)==OK){
+        printf("Present: %-5c Next: %-5c\n",p->data,succ->data);
+        p = succ;
+    }
+    return OK;
+}
 
 
 

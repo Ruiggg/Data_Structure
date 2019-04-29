@@ -5,15 +5,15 @@
 
 int main()
 {
-/*    BiThrTree T,Thr;
+    BiThrTree T,Thr;
     CreateThrBiTree(&T);
     InOrderThreading(&Thr,T);
-    InOrderTraverse_Thr(Thr,PrintElement);
- */
-    BiTree T;
+    //InOrderTraverse_Thr(Thr,PrintElement);
+    CheckFPOSIOT(T);
+   /* BiTree T;
     CreateBiTree(&T);
     PostOrderTraverse_NR(T,PrintElement);
     printf("\n");
-    PostOrderTraverse(T,PrintElement);
+    PostOrderTraverse(T,PrintElement);*/
     return 0;
 }
