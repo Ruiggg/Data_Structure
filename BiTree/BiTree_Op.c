@@ -219,6 +219,21 @@ Status FindPostOrderFirst_Thr(BiThrTree T, BiThrNode ** p){
     return OK;
 }
 
+//non-recursion version
+Status FindPostOrderFirst_Thr_NR(BiThrTree T, BiThrNode ** p){
+    //T the pointer to the root node, not the head
+    //no matter which kind of threaten it is
+    BiThrNode* ptr;
+    ptr = T;
+    while(ptr->LTag==Link || ptr->RTag==Link){
+        while(ptr->LTag == Link) ptr=ptr->lchild;
+        if(ptr->RTag == Link) ptr = ptr->rchild;
+    }
+    *p = ptr;
+    return OK;
+}
+
+
 Status FindPOScr_IOThr(BiThrTree T, BiThrNode * p,BiThrNode **successor){
     //find post-order successor of p in an full InOrder_Thr_Tree
     BiThrNode * parent;
@@ -227,7 +242,7 @@ Status FindPOScr_IOThr(BiThrTree T, BiThrNode * p,BiThrNode **successor){
     else if(parent->rchild == p) {*successor=parent; return OK;}
     else if(parent->RTag==Thread) {*successor=parent; return OK;}
     else{
-        FindPostOrderFirst_Thr(parent->rchild,successor);
+        FindPostOrderFirst_Thr_NR(parent->rchild,successor);
     }
     return OK;
 }
@@ -235,7 +250,7 @@ Status FindPOScr_IOThr(BiThrTree T, BiThrNode * p,BiThrNode **successor){
 Status CheckFPOSIOT(BiThrTree T){
     BiThrNode *succ=NULL;
     BiThrNode *p;
-    FindPostOrderFirst_Thr(T,&p);
+    FindPostOrderFirst_Thr_NR(T,&p);
     while(p->LTag == Link) p=p->lchild;
     while(FindPOScr_IOThr(T,p,&succ)==OK){
         printf("Present: %-5c Next: %-5c\n",p->data,succ->data);

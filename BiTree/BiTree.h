@@ -56,5 +56,6 @@ Status FindPOScr_IOThr(BiThrTree T, BiThrNode* p,BiThrNode **successor);
 Status CheckFPOSIOT(BiThrTree T);
 Status FindPostOrderFirst_Thr(BiThrTree T, BiThrNode ** p);
 Status FindInOrderParent_Thr(BiThrTree T, BiThrNode ** parent, BiThrNode *p);
+Status FindPostOrderFirst_Thr_NR(BiThrTree T, BiThrNode ** p);
 
 #endif // BITREE_H_INCLUDED
