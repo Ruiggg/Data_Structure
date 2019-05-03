@@ -8,7 +8,8 @@ Status InitMP(MPlist *p){
     if(!(*p)) exit(OVERFLOW);
     (*p)->tag = 1;
     (*p)->exp = 0;
-    (*p)->hp = (*p)->tp = NULL;
+    //(*p)->hp =
+    (*p)->tp = NULL;
     return OK;
 }
 
@@ -105,16 +106,20 @@ Status CopyMP(MPlist * target, MPlist source){
     (*target)->tag = source->tag;
     (*target)->exp = source->exp;
     //(*target)->hp = source->hp;
-    //(*target)->tp = source->tp;
+    (*target)->tp = NULL;
+    if(source->tag == 0){
+        (*target)->coef = source->coef;
+        return OK;
+    }
     CopyMPrecursion(&( (*target)->hp ),source->hp);
     return OK;
 }
 
-Status CopyMPrecursion(MPlist *t , MPlist s){
+Status CopyMPrecursion(MPlist* t , MPlist s){
     //the **t is the head containing an variable, not the whole head
     //copy *s to **t
     if(s){
-         *t = CreateMPNode(s->tag,s->exp);
+         (*t) = CreateMPNode(s->tag,s->exp);
         if(s->tag==1)   (*t)->coef  = s->coef;
         else   {printf("a head's tag should always be 1\n"); return ERROR;}
         //(*t)->hp = s->hp;
@@ -237,6 +242,7 @@ Status AddMP(MPlist t,MPlist s){
                 copyOfSnode->tp = tpre->tp;
                 tpre->tp = copyOfSnode;
                 snode = snode->tp;
+                tpre = copyOfSnode;
             }
             //if s is over
             if(!snode)  return OK;
@@ -306,8 +312,62 @@ Status AddNumberMP(MPlist t,double f){
     return OK;
 }
 
+Status PolyMultiply(MPlist *d,MPlist t,MPlist s){
+    //d = t*s
+    //t.s.d is not the whole head
+    MPlist ddd = CreateMPNode(1,t->exp);
+    MPlist f = CreateMPNode(0,0);
+    ddd->tp = f;
+    f->coef = 0.0;
+    f->tp = NULL;
+    //do
+    MPlist tnode = t->tp;
+    while(tnode){
+        MPlist snode = s->tp;
+        while(snode){
+            if(snode->tag==0 && tnode->tag==0){
+                MPlist node = CreateMPNode(0,snode->exp + tnode->exp);
+                MPlist head = CreateMPNode(1,t->exp);
+                head->tp = node;
+                node->tp = NULL;
+                node->coef = snode->coef * tnode->coef;
+                AddMP(ddd,head);
+            }else if(snode->tag==0 && tnode->tag==1){
+                MPlist head = CreateMPNode(1,t->exp);
+                MPlist node = CreateMPNode(1,snode->exp + tnode->exp);
+                head->tp = node;
+                node->tp = NULL;
 
+                CopyMPrecursion(&(node->hp),tnode->hp);
+                NumberMultiply(head,snode->coef);
 
+                AddMP(ddd,head);
+            }else if(snode->tag==1 && tnode->tag==0){
+                MPlist head = CreateMPNode(1,s->exp);
+                MPlist node = CreateMPNode(1,snode->exp + tnode->exp);
+                head->tp = node;
+                node->tp = NULL;
+
+                CopyMPrecursion(&(node->hp),snode->hp);
+                NumberMultiply(head,tnode->coef);
+
+                AddMP(ddd,head);
+            }else{
+                MPlist head = CreateMPNode(1,s->exp);
+                MPlist node = CreateMPNode(1,snode->exp + tnode->exp);
+                head->tp = node;
+                node->tp = NULL;
+
+                PolyMultiply(&(node->hp),tnode->hp,snode->hp);
+                AddMP(ddd,head);
+            }
+            snode = snode->tp;
+        }
+        tnode = tnode->tp;
+    }
+    *d = ddd;
+    return OK;
+}
 
 
 

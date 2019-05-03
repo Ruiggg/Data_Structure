@@ -14,6 +14,7 @@ int main()
 */
 
 int main(){
+
     MPlist m,t;
     InitMP(&m);
     CreateTestMP(m);
@@ -27,6 +28,10 @@ int main(){
     AddMP(t->hp,m->hp);
     printf("\n");
     PrintMP(t->hp,2);
+    printf("\n");
+    MPlist d;
+    PolyMultiply(&d,t->hp,m->hp);
+    PrintMP(d,2);
     DestroyMP(t);
 
     return 0;

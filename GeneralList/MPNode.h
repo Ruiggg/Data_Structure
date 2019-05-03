@@ -28,5 +28,6 @@ Status DeriFisrtVarRecurion(MPlist t);
 Status NumberMultiply(MPlist p,float m);
 Status AddMP(MPlist t,MPlist s);
 Status AddNumberMP(MPlist t,double f);
+Status PolyMultiply(MPlist *d,MPlist t,MPlist s);
 
 #endif // MPNODE_H_INCLUDED
