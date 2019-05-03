@@ -233,7 +233,7 @@ Status AddMP(MPlist t,MPlist s){
         MPlist tpre = t;
         MPlist tnode = t->tp;
         MPlist snode = s->tp;
-        if(!tnode || !snode) {printf("\nError in AddMP!\n"); return ERROR;}
+        if(!snode) {printf("\nError in AddMP!\n"); return ERROR;}
         while(tnode){
             //tackle the snode whose exp are bigger than the current tnode's exp
             while(snode && snode->exp > tnode->exp){
@@ -316,10 +316,10 @@ Status PolyMultiply(MPlist *d,MPlist t,MPlist s){
     //d = t*s
     //t.s.d is not the whole head
     MPlist ddd = CreateMPNode(1,t->exp);
-    MPlist f = CreateMPNode(0,0);
-    ddd->tp = f;
-    f->coef = 0.0;
-    f->tp = NULL;
+    //MPlist f = CreateMPNode(0,0);
+    //ddd->tp = f;
+    //f->coef = 0.0;
+    //f->tp = NULL;
     //do
     MPlist tnode = t->tp;
     while(tnode){
