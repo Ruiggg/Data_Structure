@@ -32,17 +32,28 @@ Status DeleteFisrt_GL_th(GList_th *l, ElemType* e);
 Status DeleteNode_GL_th(GList_th* l,ElemType x);
 
 
-//using chains storation
+//using chains storation(sub-list analysis storation)
 //needs a node representing the list itself(like a header), whose hp points to the first element in the Glist
 //empty list pointer != NULL, but its hp anf tp == NULL
 typedef struct GLNode_l {
     ElemTag tag;
     union {
         Atomtype atom;
-        struct GLNode_l * hp;
+        struct GLNode_l * hp;   //pointing to the first element of what this List-node represent.
     };
-    struct GLNode_l *tp;
+    struct GLNode_l *tp;    //the next element in the same layer, that is, the same list
 
 } GLNode_l,*GList_l;
+
+Status InitGlist_l(GList_l *p);
+Status CreateTestGL_l(GList_l l);
+int GList_l_depth(GList_l l);
+Status CopyGlist_l(GList_l *T,GList_l L);
+Status PrintGL_l(GList_l l);
+Status InsertFirst_GL_l(GList_l l,ElemType e);
+Status DeleteFisrt_GL_l(GList_l l,ElemType *e);
+Status DeleteFisrtElem_GL_l(GList_l l);
+Status DeleteNode_GL_l(GList_l l,ElemType e);
+Status DeleteNode_GL_l(GList_l l,ElemType e);
 
 #endif // GENERALLIST_H_INCLUDED

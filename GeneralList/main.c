@@ -38,7 +38,7 @@ int main(){
     return 0;
 }
 */
-
+/*
 int main(){
     GList_th l,t;
     InitGlist_th(&l,1);
@@ -61,5 +61,24 @@ int main(){
     DeleteNode_GL_th(&t,'b');
     PrintGL_th(t);
     puts("");
+    return 0;
+}
+*/
+
+int main(){
+    GList_l l,t;
+    InitGlist_l(&l);
+    CreateTestGL_l(l);
+    PrintGL_l(l); puts("");
+    CopyGlist_l(&t,l);
+    PrintGL_l(t); puts("");
+    InsertFirst_GL_l(t,'g');
+    PrintGL_l(t); puts("");
+    DeleteNode_GL_l(t,'c');
+    PrintGL_l(t); puts("");
+
+    //int d = GList_l_depth(t);
+    //printf("Depth of t: %d\n",d);
+
     return 0;
 }
