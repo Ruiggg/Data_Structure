@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1556887662 source:/home/qianyu/workspace/code/c/GeneralList/main.c
+1556953410 source:/home/qianyu/workspace/code/c/GeneralList/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"MPNode.h"
+	"GeneralList.h"
 
 1555331469 /home/qianyu/workspace/code/c/GeneralList/Predefined_const.h
 
@@ -15,13 +16,13 @@
 	<stdio.h>
 	<stdlib.h>
 
-1556384322 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_ht.c
+1556953472 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_ht.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"GeneralList.h"
 
-1556384220 /home/qianyu/workspace/code/c/GeneralList/GeneralList.h
+1556953118 /home/qianyu/workspace/code/c/GeneralList/GeneralList.h
 	"MPNode.h"
 
 1556384401 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_l.c
