@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1556970594 source:/home/qianyu/workspace/code/c/TSMatrix/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"TSMatrix.h"
+
+1556966041 /home/qianyu/workspace/code/c/TSMatrix/Predefined_const.h
+
+1556970252 /home/qianyu/workspace/code/c/TSMatrix/TSMatrix.h
+	"Predefined_const.h"
+
+1556970264 source:/home/qianyu/workspace/code/c/TSMatrix/TSMatrix_Op.c
+	"Predefined_const.h"
+	"TSMatrix.h"
+	<stdio.h>
+	<stdlib.h>
+
