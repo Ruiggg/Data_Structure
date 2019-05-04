@@ -13,7 +13,6 @@ int NotZero(TSMatrix M,int m,int n){
             return s;
     }
     return 0;
-
 }
 
 Status PrintSMatrix(TSMatrix M){

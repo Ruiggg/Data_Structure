@@ -32,9 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="OLMatrix.h" />
-		<Unit filename="OLMatrix_Op.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Predefined_const.h" />
 		<Unit filename="SparseMatrix.h" />
 		<Unit filename="SparseMatrixOp.c">
