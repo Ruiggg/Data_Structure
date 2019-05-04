@@ -5,8 +5,14 @@
 
 int main()
 {
-    TSMatrix m;
+    TSMatrix m,t;
     CreateTestTSMatrix(&m);
-    PrintSMatrix(m);
+    PrintSMatrix(&m);
+    //PrintTSArray(&m);
+    printf("After transposition: \n");
+    FastTransposeTSMatrix(&t,&m);
+    PrintSMatrix(&t);
+    //PrintTSArray(&t);
     return 0;
 }
+

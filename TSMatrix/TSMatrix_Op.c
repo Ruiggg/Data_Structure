@@ -81,20 +81,20 @@ Status InsertToTSMatrix(TSMatrix* m,int row,int col,int ele){
     return OK;
 }
 
-Status PrintTSArray(TSMatrix m){
+Status PrintTSArray(TSMatrix* m){
     int k;
-    for(k=0;k<m.tu;k++){
-        printf("%d %d : %d \n",m.data[k].i,m.data[k].j,m.data[k].e);
+    for(k=0;k<m->tu;k++){
+        printf("%d %d : %d \n",m->data[k].i,m->data[k].j,m->data[k].e);
     }
     return OK;
 }
 
-Status PrintSMatrix(TSMatrix M){
+Status PrintSMatrix(TSMatrix *M){
      int i,j,p;
-     for(i=0;i<M.mu;i++){
-        for(j=0;j<M.nu;j++){
+     for(i=0;i<M->mu;i++){
+        for(j=0;j<M->nu;j++){
             if((p=NotZero(M,i,j))!=-1)
-                printf("%5d",M.data[p].e);      //the argument %5d can be changed by the type of ElemTYpe
+                printf("%5d",M->data[p].e);      //the argument %5d can be changed by the type of ElemTYpe
             else
                 printf("%5d",0);
         }//for j
@@ -103,20 +103,84 @@ Status PrintSMatrix(TSMatrix M){
     return OK;
 }
 
-int NotZero(TSMatrix M,int m,int n){
+int NotZero(TSMatrix *M,int m,int n){
     int s;
-    for(s=0;s<M.tu;s++){
-        if(m==M.data[s].i && n==M.data[s].j)
+    for(s=0;s<M->tu;s++){
+        if(m==M->data[s].i && n==M->data[s].j)
             return s;
     }
     return -1;
 }
 
+Status TransposeTSMatrix(TSMatrix *T,TSMatrix *M){
+    T->mu = M->nu;
+    T->nu = M->mu;
+    T->tu = M->tu;
+    int s = 0;  //the pos in T to be added
+    int col,p;
+    for(col=0;col<M->nu;col++){
+        for(p=0;p<M->tu;p++){
+            if(col == M->data[p].j){
+                T->data[s].i = M->data[p].j;
+                T->data[s].j = M->data[p].i;
+                T->data[s].e = M->data[p].e;
+                s++;
+            }
+        }
+    }
+    return OK;
+}
 
+Status MultTSMatrix(TSMatrix *d,TSMatrix *t,TSMatrix *s){// not compelete
+// d = t * s
+    if(t->nu != s->mu){printf("Size error.\n"); return ERROR;}
+    d->mu = t->mu;
+    d->nu = s->nu;
+    d->tu = 0;
 
+    return OK;
+}
 
+Status Sing(void){
 
+//你都如何回忆我
 
+//带着笑或是很沉默
+
+//这些年来
+
+//有没有人能让你不寂寞
+
+//后来
+
+//我总算学会了 如何去爱
+
+//可惜你 早已远去
+
+//消失在人海
+
+    return OK;
+}
+
+Status FastTransposeTSMatrix(TSMatrix *T,TSMatrix *M){
+    T->mu = M->nu;
+    T->nu = M->mu;
+    T->tu = M->tu;
+    int num[M->nu]; //the number of non-zero element for each column of M
+    int cpot[M->nu]; //the position in T (to be added) of each column of M
+    //initialize
+    int p;
+    for(p=0;p<M->nu;p++) num[p]=cpot[p]=0;
+    for(p=0;p<M->tu;p++) num[M->data[p].j]++;
+    for(p=1;p<M->nu;p++) cpot[p]=cpot[p-1]+num[p-1];
+    for(p=0;p<M->tu;p++){
+        T->data[cpot[M->data[p].j]].i = M->data[p].j;
+        T->data[cpot[M->data[p].j]].j = M->data[p].i; //really hard to read NP-hard!! 2333
+        T->data[cpot[M->data[p].j]].e = M->data[p].e;
+        cpot[M->data[p].j]++;
+    }
+    return OK;
+}
 
 
 

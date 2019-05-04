@@ -12,17 +12,19 @@ typedef struct {
 }Triple;
 
 typedef struct {
-    Triple data[MAXSIZE+1];         //data[0] is unused (I don't know why)
+    Triple data[MAXSIZE+1];         //data[0] is used
     int mu,nu,tu;                   //m*n Matrix and the number of tu elements are not 0
                                     // m:row       n:colomn
 }TSMatrix;
 
+Status CreateTestTSMatrix(TSMatrix *m);
 Status CreateTSMatrix(TSMatrix *m);
 Status InsertToTSMatrix(TSMatrix* m,int row,int col,int ele);
-Status PrintTSArray(TSMatrix m); //use for debug
-int NotZero(TSMatrix M,int m,int n);
-Status PrintSMatrix(TSMatrix m);
-
+Status PrintTSArray(TSMatrix* m); //use for debug
+int NotZero(TSMatrix* M,int m,int n);
+Status PrintSMatrix(TSMatrix * m);
+Status TransposeTSMatrix(TSMatrix *T,TSMatrix *M);
+Status FastTransposeTSMatrix(TSMatrix *T,TSMatrix *M);
 
 
 typedef struct {
