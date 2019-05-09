@@ -3,7 +3,7 @@
 #include "Predefined_const.h"
 #include "Graph.h"
 
-
+/*
 int main()
 {
     AMLGraPtr G;
@@ -16,5 +16,16 @@ int main()
         ShowAMLGedge(*G,i,&num);
         printf("edges' number adjacent to node %c is %d.\n",G->adjmulist[i].data,num);
     }
+    return 0;
+}
+*/
+
+int main(){
+    ALGraPtr g;
+    InitALGraph(&g);
+    CreateALGraph(g);
+    ShowADJList(*g);
+    //DFSGraph(g,visit);
+    BFS(g,visit);
     return 0;
 }

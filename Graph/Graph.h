@@ -1,9 +1,16 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
+//Queue:
+
+
+
+
 //------------Array(Adjacent Matrix)----------------------------
 #define INFINITY INT_MAX
 #define MAX_VERTEX_NUM 20
 
+
+typedef enum {True,False} Boolean;
 typedef int VertexType; //the type of nodes
 typedef int VRType; //the type of the arcs
 typedef enum {DG,DN,UDG,UDN} GraphKind;
@@ -35,11 +42,15 @@ typedef struct {
         ArcNode *first;
     }v[MAX_VERTEX_NUM];
 }ALGraph,*ALGraPtr;
+
 Status InitALGraph(ALGraPtr *G);
 Status CreateALGraph(ALGraph *G);
 Status ShowADJList(ALGraph G);
 int FirstAdjVex(ALGraph G, int x);
 int NextAdjVex(ALGraph G, int x, int y);
+Status DFSGraph(ALGraph * p,Status(*visit)(ElemType e));
+Status DFS(ALGraph *g,int *visited,int i,Status(*visit)(ElemType e));
+Status visit(ElemType e);
 
 
 

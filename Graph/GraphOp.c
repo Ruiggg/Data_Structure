@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "Predefined_const.h"
 #include "Graph.h"
+#include "LinkQueue.h"
+
 Status InitMGraph(MGraPtr *G){
     (*G) = (MGraPtr)malloc(sizeof(MGraph));
     if(!(*G)) exit(OVERFLOW);
@@ -137,9 +139,9 @@ Status CreateALGraph(ALGraph *G){
         if(G->kind == UDG || G->kind==UDN){//undirected graph
             ArcNode *q = (ArcNode*)malloc(sizeof(ArcNode));
             if(!q)  exit(OVERFLOW);
-            p->adjvex = h-'A';
-            p->nextarc = G->v[t-'A'].first;
-            G->v[t-'A'].first = p;
+            q->adjvex = h-'A';
+            q->nextarc = G->v[t-'A'].first;
+            G->v[t-'A'].first = q;
         }
         printf("Input edge x-->y (x y): ");
         scanf("%c%c",&h,&t);
@@ -314,9 +316,68 @@ Status ShowAMLGedge(AMLGraph G,int i,int *n){ //i:the index of the node
     return OK;
 }
 
+Status visit(ElemType e){
+    printf("%4c",e);
+    return OK;
+}
 
+//test:
+//2 8 9 AB AC CF CG FG BD BE EH DH 1 1
+//Depth First Search --- DFS
+//using data structure --- positive ALGraph (adjcent list)
+Status DFSGraph(ALGraph * p,Status(*visit)(ElemType e)){
+    int visited[p->vexnum];
+    int i;
+    for(i=0;i<p->vexnum;i++)    visited[i] = False;
+    for(i=0;i<p->vexnum;i++)
+        if(visited[i]==False) DFS(p,visited,i,visit),printf("\n***\n");
+    return OK;
+}
 
+Status DFS(ALGraph *g,int *visited,int i,Status(*visit)(ElemType e)){
+    visited[i] = True;
+    visit(g->v[i].vertex);
+    ArcNode * arc = g->v[i].first;
+    while(arc){
+        if(visited[arc->adjvex]==False)
+            DFS(g,visited,arc->adjvex,visit);
+        arc = arc->nextarc;
+    }
+    return OK;
+}
 
+//BFS
+//non-recursion
+//key: visit and then add it to queue
+//so queue has nodes having been visited
+Status BFS(ALGraph* G, Status(*visit)(ElemType e)){
+    int i;
+    int visited[G->vexnum];
+    for(i=0;i<G->vexnum;i++) visited[i]=False;
+    LinkQueue *lq;
+    InitQueue(&lq);
+    for(i=0;i<G->vexnum;i++){
+        if(visited[i]==False){
+            visited[i] = True;     //set true
+            visit(G->v[i].vertex); //fisrt visit it
+            EnQueue(lq,i);        //then push it
+            while(!IsQueueEmpty(lq)){
+                int j;
+                DeQueue(lq,&j);
+                ArcNode * arc;
+                for(arc = G->v[j].first;arc;arc=arc->nextarc){
+                    if(visited[arc->adjvex]==False){
+                        visit(G->v[arc->adjvex].vertex);
+                        visited[arc->adjvex]=True;
+                        EnQueue(lq,arc->adjvex);
+                    }//if
+                }//while
+            }
+            printf("\n");
+        }//if
+    }//for
+    return OK;
+}
 
 
 

@@ -1,17 +1,26 @@
 # depslib dependency file v1.0
-1556382041 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
+1557400591 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"Graph.h"
+	"LinkQueue.h"
 
 1556205096 /home/qianyu/workspace/code/c/Graph/Predefined_const.h
 
-1556383851 /home/qianyu/workspace/code/c/Graph/Graph.h
+1557396662 /home/qianyu/workspace/code/c/Graph/Graph.h
 
-1556383839 source:/home/qianyu/workspace/code/c/Graph/main.c
+1557400105 source:/home/qianyu/workspace/code/c/Graph/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"Graph.h"
+
+1557400365 source:/home/qianyu/workspace/code/c/Graph/LinkQueue_Op.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"LinkQueue.h"
+
+1557400489 /home/qianyu/workspace/code/c/Graph/LinkQueue.h
 
