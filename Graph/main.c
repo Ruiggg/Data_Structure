@@ -27,5 +27,14 @@ int main(){
     ShowADJList(*g);
     //DFSGraph(g,visit);
     BFS_II(g,visit,0);
+    printf("\n");
+    char path[20];
+    path[0] = '\0';
+    //path[1] = 'a';
+    //path[2] = 'b';
+    //path[3] = '\0';
+    //printf("%s\n",path);
+    DFSPath(g,1,5,path);
+    printf("%s\n",path);
     return 0;
 }

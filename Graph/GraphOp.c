@@ -405,10 +405,48 @@ Status BFS_II(ALGraph*G, Status(*visit)(ElemType e),int x){
     return OK;
 }
 
+Status DFSPath(ALGraph *G,int a,int b,char *path){
+//find a simple path from a to b
+    if(!G || a<0 || b<0 || a>=G->vexnum || b>=G->vexnum) return ERROR;
+    int visited[G->vexnum],i;
+    for(i=0;i<G->vexnum;i++) visited[i]=False;
+    *(path++) = G->v[a].vertex; visited[a]=True; //visit
+    int found = 0;//1: found
+    ArcNode * arc;
+    for(arc = G->v[a].first; arc && (!found) ; arc = arc->nextarc){
+        if(arc->adjvex == b){
+            found = 1;
+            *(path++) = G->v[arc->adjvex].vertex;
+            *(path) = '\0';
+        }else{
+            DFSsearch(G,arc->adjvex,b,path,&found,visited);
+        }
+    }
+    char s[11]="Not found"; int mmm;
+    if(found==0) {
+        path--;
+        for(mmm=0;mmm<11;mmm++) *(path++) = s[mmm];
+    }
+    return OK;
+}
 
-
-
-
+Status DFSsearch(ALGraph *G,int start,int target,char *path,int *found,int *visited){
+    visited[start]=True;
+    if(start==target){
+        *found = 1;
+        *(path++) = G->v[start].vertex;
+        *(path) = '\0';
+        return OK;
+    }
+    *(path++) = G->v[start].vertex;
+    ArcNode * arc;
+    for(arc=G->v[start].first; arc&&(!*found) ;arc=arc->nextarc){
+        if(visited[arc->adjvex]==False)
+            DFSsearch(G,arc->adjvex,target,path,found,visited);
+    }
+    //if(found==0) *(--path)='\0';
+    return OK;
+}
 
 
 
