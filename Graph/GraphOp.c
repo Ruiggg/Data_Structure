@@ -379,6 +379,33 @@ Status BFS(ALGraph* G, Status(*visit)(ElemType e)){
     return OK;
 }
 
+Status BFS_II(ALGraph*G, Status(*visit)(ElemType e),int x){
+// x is the first node to be visited
+//q[0 --- head) store what has been visited
+//q[head --- rear) store what are to be visited
+    //int visited[G->vexnum];
+    int index;
+    //for(index=0;index<G->vexnum;index++) visited[index] = False; //initial it
+    if(x<0 || x>= G->vexnum) return ERROR;
+    int q[MAX_VERTEX_NUM+1],head,rear;
+    head = rear = 0;
+    q[rear++] = x;  // x add to queue
+    while(head != rear){
+        int j = q[head++]; //take the head of the queue
+        ArcNode * arc = G->v[j].first;
+        visit(G->v[j].vertex); //visited[j]=True;//visit it
+        for( ; arc ; arc=arc->nextarc){//add its adjacent nodes to the queue
+            for(index = 0;index<rear; index++){
+                if(q[index]==arc->adjvex) break;
+            }
+            if(index >= rear)
+                q[rear++] = arc->adjvex;
+        }//for
+    }//while
+    return OK;
+}
+
+
 
 
 

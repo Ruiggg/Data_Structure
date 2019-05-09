@@ -35,6 +35,10 @@
 		<Unit filename="GraphOp.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="LinkQueue.h" />
+		<Unit filename="LinkQueue_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Predefined_const.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />

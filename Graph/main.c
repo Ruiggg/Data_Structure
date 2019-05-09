@@ -26,6 +26,6 @@ int main(){
     CreateALGraph(g);
     ShowADJList(*g);
     //DFSGraph(g,visit);
-    BFS(g,visit);
+    BFS_II(g,visit,0);
     return 0;
 }

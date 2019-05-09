@@ -51,7 +51,8 @@ int NextAdjVex(ALGraph G, int x, int y);
 Status DFSGraph(ALGraph * p,Status(*visit)(ElemType e));
 Status DFS(ALGraph *g,int *visited,int i,Status(*visit)(ElemType e));
 Status visit(ElemType e);
-
+Status BFS_II(ALGraph*G, Status(*visit)(ElemType e),int x);
+Status BFS(ALGraph* G, Status(*visit)(ElemType e));
 
 
 //Orthogonal List---for directed graph
