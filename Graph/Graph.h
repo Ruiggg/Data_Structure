@@ -55,7 +55,8 @@ Status BFS_II(ALGraph*G, Status(*visit)(ElemType e),int x);
 Status BFS(ALGraph* G, Status(*visit)(ElemType e));
 Status DFSPath(ALGraph *G,int a,int b,char *path);
 Status DFSsearch(ALGraph *G,int start,int target,char *path,int *found,int *visited);
-
+//topo
+Status TopologicalSort(ALGraPtr g);
 
 
 //Orthogonal List---for directed graph

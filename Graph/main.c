@@ -19,7 +19,7 @@ int main()
     return 0;
 }
 */
-
+/*
 int main(){
     ALGraPtr g;
     InitALGraph(&g);
@@ -38,3 +38,20 @@ int main(){
     printf("%s\n",path);
     return 0;
 }
+*/
+
+
+void testTopologicalSort(void){
+    ALGraPtr g;
+    InitALGraph(&g);
+    CreateALGraph(g);
+    TopologicalSort(g);
+}
+
+int main(void){
+    testTopologicalSort();
+    return 0;
+}
+
+
+
