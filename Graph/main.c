@@ -45,7 +45,11 @@ void testTopologicalSort(void){
     ALGraPtr g;
     InitALGraph(&g);
     CreateALGraph(g);
-    TopologicalSort(g);
+    int kind = TopologicalSort(g);
+    if(kind==ERROR)
+        printf("\nThere exists loop.\n");
+    else
+        printf("\nNo loop.\n");
 }
 
 int main(void){
