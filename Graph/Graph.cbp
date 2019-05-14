@@ -40,6 +40,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Predefined_const.h" />
+		<Unit filename="TopoSort.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

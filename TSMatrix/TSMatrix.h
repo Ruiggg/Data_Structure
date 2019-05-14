@@ -27,10 +27,20 @@ Status TransposeTSMatrix(TSMatrix *T,TSMatrix *M);
 Status FastTransposeTSMatrix(TSMatrix *T,TSMatrix *M);
 
 
+
+
 typedef struct {
     Triple data[MAXSIZE+1];
     int rpos[MAXRC+1];              //the position(eg. index) in the data[] of the 1st non-zero element(if any) in each row
     int mu,nu,tu;
 }RLSMatrix;
+
+
+Status InsertToRLSMatrix(RLSMatrix* m,int row,int col,int ele);
+Status RLSpos(RLSMatrix *M);
+Status CreateRLSMatrix(RLSMatrix *m);
+Status MultRLSMatrix(RLSMatrix *d,RLSMatrix *t,RLSMatrix *s);
+int RNotZero(RLSMatrix *M,int m,int n);
+Status PrintRLSMatrix(RLSMatrix *M);
 
 #endif // TSMATRIX_H_INCLUDED
