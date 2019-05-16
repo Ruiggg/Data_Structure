@@ -4,7 +4,7 @@
 #include "Predefined_const.h"
 #include "SString.h"
 
-int SStrConcat(SString *t,SString *s1,SString *s2){
+int SStrConcat(SString t,SString s1,SString s2){
     int uncut;
     if(s1[0]+s2[0]<MAXSTRLEN){
         strncpy(t+1,s1+1,s1[0]);

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1557977668 source:/home/qianyu/workspace/code/c/String/main.c
+	<stdio.h>
+	<stdlib.h>
+

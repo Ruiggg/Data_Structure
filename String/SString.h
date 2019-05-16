@@ -5,7 +5,7 @@
 
 #define MAXSTRLEN 255
 
-typedef unsigned char SString [MAXSTRLEN+2] SString;
+typedef unsigned char SString [MAXSTRLEN+2];// SString;
 //s[0] is the length
 
 
