@@ -31,6 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="HString.h" />
+		<Unit filename="HString_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Predefined_const.h" />
+		<Unit filename="SString.h" />
+		<Unit filename="SString_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

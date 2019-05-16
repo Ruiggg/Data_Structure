@@ -1,6 +1,10 @@
 #ifndef PREDEFINED_CONST_H_INCLUDED
 #define PREDEFINED_CONST_H_INCLUDED
 
+
+#define GREATER 1
+#define EQUAL   0
+#define LESS    -1
 #define TRUE    1
 #define FALSE   0
 #define OK      1

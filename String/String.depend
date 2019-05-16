@@ -1,5 +1,28 @@
 # depslib dependency file v1.0
-1557977668 source:/home/qianyu/workspace/code/c/String/main.c
+1557993179 source:/home/qianyu/workspace/code/c/String/main.c
 	<stdio.h>
 	<stdlib.h>
+	"Predefined_const.h"
+	"SString.h"
+	"HString.h"
+
+1557986715 source:/home/qianyu/workspace/code/c/String/SString_Op.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Predefined_const.h"
+	"SString.h"
+
+1557988592 /home/qianyu/workspace/code/c/String/Predefined_const.h
+
+1557986721 /home/qianyu/workspace/code/c/String/SString.h
+
+1557995913 source:/home/qianyu/workspace/code/c/String/HString_Op.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Predefined_const.h"
+	"HString.h"
+
+1557995865 /home/qianyu/workspace/code/c/String/HString.h
 
