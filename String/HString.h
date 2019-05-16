@@ -22,4 +22,12 @@ Status HStrReplace(HString *s,int pos,int len,HString *t);
 int HStrIndex(HString *s,HString *t,int pos);
 Status HStrRepSubstr(HString *s,HString *t,HString *v);
 
+//KMP
+Status getNext(HString *pattern,int *next);
+
+
+
+
+
+
 #endif // HSTRING_H_INCLUDED

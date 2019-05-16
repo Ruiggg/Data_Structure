@@ -3,6 +3,8 @@
 #include "Predefined_const.h"
 #include "SString.h"
 #include "HString.h"
+#include "LString.h"
+
 
 void testSStr(void){
     char* s1 = "Data ";
@@ -55,8 +57,27 @@ void testHStr(void){
     printf("%s\n",t.ch);
 }
 
+void testKMP(void){
+    //char *s1 = "Data Structure Data Structure";
+    char *s1 = "abaabcac";
+    HString hs1;
+    HStrInit(&hs1);
+    HStrAssign(&hs1,s1);
+    int next[hs1.length];
+    getNext(&hs1,next);
+    for(int i=0;i<hs1.length;i++) printf("%4d",next[i]);
+    printf("\n-------------------------------------------------------------\n");
+    char *s3 = "acabaabaabcacaabc";
+    HString mainstr;
+    HStrInit(&mainstr);
+    HStrAssign(&mainstr,s3);
+    int pos = HStrIndexKMP(&mainstr,&hs1,1);
+    printf("pos: %d\n",pos);
+}
+
 int main(){
     //testSStr();
-    testHStr();
+    //testHStr();
+    testKMP();
     return 0;
 }
