@@ -18,6 +18,23 @@ Status getNext(HString *pattern,int *next){
     return OK;
 }
 
+
+Status getNextVal(HString *pattern,int *nextval){
+    int k=-1,j=0;
+    nextval[0]=-1;
+    while(j < pattern->length){
+        if(k==-1 || pattern->ch[k]==pattern->ch[j]){
+            k++,j++;
+            if(pattern->ch[k]==pattern->ch[j])
+                nextval[j]=nextval[k];
+            else
+                nextval[j]=k;
+        }else
+            k=nextval[k];
+    }
+    return OK;
+}
+
 //pos is the index+1
 int HStrIndexKMP(HString *s,HString *t,int pos){ //s:main t:pattern; return:index+1
     int j=0,i=pos-1;//index
@@ -31,7 +48,18 @@ int HStrIndexKMP(HString *s,HString *t,int pos){ //s:main t:pattern; return:inde
     else return 0;
 }
 
-
+//pos is the index+1
+int HStrIndexFastKMP(HString *s,HString *t,int pos){ //s:main t:pattern; return:index+1
+    int j=0,i=pos-1;//index
+    int nextval[t->length];
+    getNextVal(t,nextval);
+    while(i<s->length && j<t->length){
+        if(j==-1 || t->ch[j]==s->ch[i]) i++,j++;
+        else j=nextval[j];
+    }
+    if(j>=t->length) return i-t->length+1;//return index+1
+    else return 0;
+}
 
 
 

@@ -31,8 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="HStirng_KMP.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="HString.h" />
 		<Unit filename="HString_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="LString.h" />
+		<Unit filename="LString_Op.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Predefined_const.h" />

@@ -73,6 +73,8 @@ void testKMP(void){
     HStrAssign(&mainstr,s3);
     int pos = HStrIndexKMP(&mainstr,&hs1,1);
     printf("pos: %d\n",pos);
+    pos = HStrIndexFastKMP(&mainstr,&hs1,1);
+    printf("After fastKMP, pos: %d\n",pos);
 }
 
 int main(){
