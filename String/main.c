@@ -45,6 +45,7 @@ void testHStr(void){
     HStrInsert(&t,9,&subs);
     printf("%s\n",t.ch);
 
+    if(HStrReplace(&t,9,15,&hs1)) printf("%s\n",t.ch);
 }
 
 int main(){

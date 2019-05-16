@@ -18,6 +18,8 @@ Status HStrAssign(HString *s,char *sc);
 Status HStrConcat(HString *t,HString *s1,HString *s2);
 Status HStrSubStr(HString *subs,HString *s,int pos,int len);
 Status HStrInsert(HString *s,int i,HString *t);
+Status HStrReplace(HString *s,int pos,int len,HString *t);
+
 
 
 #endif // HSTRING_H_INCLUDED

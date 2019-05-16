@@ -101,6 +101,27 @@ Status HStrInsert(HString *s,int i,HString *t){
 
 }
 
-
+Status HStrReplace(HString *s,int pos,int len,HString *t){
+    //replace s: pos-1,pos,...,pos+len-2 with t
+    //pos-1 is the index of pos-th char
+    //pos=1,2,...,s->length; len=1,....,length-pos+1
+    if(pos<=0 || pos>s->length || len<=0 || len>s->length-pos+1) return ERROR;
+    if(len<t->length){
+        if(s->strsize <= s->length+t->length-len){
+            s->ch = (char*)realloc(s->ch,(s->length+t->length-len+1)*sizeof(char));
+            if(!s->ch) return ERROR;
+            s->strsize = s->length+t->length-len+1;
+        }
+        int shift = t->length - len; //move right  number
+        for(int index=s->length;index>=pos-1+len;index--) s->ch[index+shift]=s->ch[index];
+        //for(int index=pos-1;index<pos-1+t->length;index++) s->ch[index]=t->ch[index-(pos-1)];
+    }else if(len>t->length){
+        int shift = len-t->length; //move left
+        for(int index=pos-1+t->length;index<=s->length;index++) s->ch[index]=s->ch[index+len-t->length];
+    }
+    for(int index=pos-1;index<pos-1+t->length;index++) s->ch[index]=t->ch[index-(pos-1)];
+    s->length = s->length+t->length-len;
+    return OK;
+}
 
 
