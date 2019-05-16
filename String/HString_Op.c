@@ -67,7 +67,9 @@ Status HStrConcat(HString *t,HString *s1,HString *s2){
     return OK;
 }
 
+//POS :index not the sequential number
 Status HStrSubStr(HString *subs,HString *s,int pos,int len){
+    //pos is the index
     if(pos<0 || pos>=s->length || len<0 || len>s->length-pos) return ERROR;
 
     if(len >= subs->strsize){
@@ -101,6 +103,8 @@ Status HStrInsert(HString *s,int i,HString *t){
 
 }
 
+
+//pos >= 1
 Status HStrReplace(HString *s,int pos,int len,HString *t){
     //replace s: pos-1,pos,...,pos+len-2 with t
     //pos-1 is the index of pos-th char
@@ -123,5 +127,61 @@ Status HStrReplace(HString *s,int pos,int len,HString *t){
     s->length = s->length+t->length-len;
     return OK;
 }
+
+
+//pos >= 1
+int HStrIndex(HString *s,HString *t,int pos){
+    //from pos-1, match t in s
+    //pos means pos-th char, that is, the index is pos-1
+    //return the sequential number (=index+1)
+    if(pos<=0||pos>s->length) return ERROR;//pos=1,2,...,s->length
+    int i=pos-1;//i is index
+    HString sub;
+    HStrInit(&sub);
+    while(i <= s->length - t->length){
+        if(!HStrSubStr(&sub,s,i,t->length)) return ERROR;
+        if(IsStrEqual(&sub,t)) return i+1;
+        else i++;
+    }
+    return 0;
+}
+
+Status HStrRepSubstr(HString *s,HString *t,HString *v){
+    //replace all t in s to v
+    int pos = 1;
+    while(pos<=s->length-t->length+1){
+        int pos_sub = HStrIndex(s,t,pos);
+        if(pos_sub==0) pos++;
+        else HStrReplace(s,pos_sub,t->length,v),pos+=v->length;
+    }
+    return OK;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

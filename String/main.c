@@ -46,6 +46,13 @@ void testHStr(void){
     printf("%s\n",t.ch);
 
     if(HStrReplace(&t,9,15,&hs1)) printf("%s\n",t.ch);
+    printf("len: %d\n",t.length);
+
+    int index = HStrIndex(&t,&hs1,3);
+    printf("pos(index+1): %d\n",index);
+
+    HStrRepSubstr(&t,&hs1,&hs2);
+    printf("%s\n",t.ch);
 }
 
 int main(){

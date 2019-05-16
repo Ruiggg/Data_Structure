@@ -19,7 +19,7 @@ Status HStrConcat(HString *t,HString *s1,HString *s2);
 Status HStrSubStr(HString *subs,HString *s,int pos,int len);
 Status HStrInsert(HString *s,int i,HString *t);
 Status HStrReplace(HString *s,int pos,int len,HString *t);
-
-
+int HStrIndex(HString *s,HString *t,int pos);
+Status HStrRepSubstr(HString *s,HString *t,HString *v);
 
 #endif // HSTRING_H_INCLUDED
