@@ -1,8 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Predefined_const.h"
-#include "SMatrix_OL.h"
 
+#define GREATER 1
+#define EQUAL   0
+#define LESS    -1
+#define TRUE    1
+#define FALSE   0
+#define OK      1
+#define ERROR   0
+#define INFEASIBLE  -1
+#define OVERFLOW    -2
+#define UNDERFLOW   -3
+#define NULL 0
+
+typedef int CLMElemType; //cross-linked-matrix-elemtype
+typedef int Status;
+
+typedef struct OLNode {
+    int i,j;//i:row; j:col
+    CLMElemType e;
+    struct OLNode *right,*down;
+}OLNode,*OLink;
+
+typedef struct {
+    OLink *rhead,*chead; //store the pointer pointing to the first elem in each row and column
+    int mu,nu,tu;
+}CrossList;
+Status CreateSMatrix_OL(CrossList *M);
+Status InsertSMatrix_OL(CrossList *M,int row,int col,CLMElemType value);
+OLink CreateOLNode(int row,int col,CLMElemType value);
+Status PrintSMatrix_OL(CrossList *M);
+Status InsertSMatrix_OL_II(OLink *m,OLink p,OLink *pre,OLink *hl,CrossList *M,CrossList *S);
+Status AddSMatrix_OL(CrossList *M,CrossList *S);
+Status LinkInColomn_SMatrix_OL(OLink *hl,OLink p,CrossList *M);
+Status Check_TraverseCol(CrossList *M);
+Status Check_TraverseRow(CrossList *M);
+Status DeleteInColomn_SMatrix_OL(OLink *hl,OLink *m,CrossList *M);
+
+
+//OJ
+Status CreateSMatrix_OJ(CrossList *M,CrossList *N);
+Status OJ_Print_SMatrix_OL(CrossList *M);
 Status CreateSMatrix_OL(CrossList *M){
     printf("Input rownum,colnum,totalnum: ");
     scanf("%d%d%d",&(M->mu),&(M->nu),&(M->tu));//not check rightness
@@ -24,7 +62,7 @@ Status CreateSMatrix_OL(CrossList *M){
 
 Status InsertSMatrix_OL(CrossList *M,int row,int col,CLMElemType value){
     if(row<0||row>=M->mu||col<0||col>=M->nu) return ERROR;
-    OLNode* node = CreateOLNode(row,col,value);
+    OLink node = CreateOLNode(row,col,value);
     if(!node) return ERROR;
     OLink rowp = M->rhead[row];
     OLink colp = M->chead[col];
@@ -99,7 +137,6 @@ Status AddSMatrix_OL(CrossList *M,CrossList *S){
             InsertSMatrix_OL_II(&m,p,&pre,hl,M,S);
         }//for
     }//for
-    return OK;
 }
 
 Status InsertSMatrix_OL_II(OLink *m,OLink p,OLink *pre,OLink *hl,CrossList *M,CrossList *S){
@@ -149,8 +186,7 @@ Status LinkInColomn_SMatrix_OL(OLink *hl,OLink p,CrossList *M){
     }
     else if(hl[col]->i < p->i){ //if at the beginning it is null
         while(hl[col] && hl[col]->down && hl[col]->down->i < p->i) hl[col]=hl[col]->down;
-        p->down = hl[col]->down;
-        hl[col]->down = p;
+        p->down = hl[col];
         hl[col] = p;
 
     }
@@ -205,8 +241,85 @@ Status Check_TraverseRow(CrossList *M){
     }
     return OK;
 }
+Status CreateSMatrix_OJ(CrossList *M,CrossList *N){
+    scanf("%d",&(M->mu)); getchar(); N->mu = M->mu; M->tu = 0;
+    scanf("%d",&(M->nu)); getchar(); N->nu = M->nu; N->tu = 0;
+    int m,n;
+
+    M->rhead = (OLink*)malloc((M->mu)*sizeof(OLink));
+    M->chead = (OLink*)malloc((M->nu)*sizeof(OLink));
+    for(int s=0;s<M->mu;s++) (M->rhead)[s] = NULL;
+    for(int s=0;s<M->nu;s++) (M->chead)[s] = NULL;
+
+    N->rhead = (OLink*)malloc((N->mu)*sizeof(OLink));
+    N->chead = (OLink*)malloc((N->nu)*sizeof(OLink));
+    for(int s=0;s<N->mu;s++) (N->rhead)[s] = NULL;
+    for(int s=0;s<N->nu;s++) (N->chead)[s] = NULL;
+
+    getchar();//[
+    for(m=0;m<M->mu;m++){
+        getchar();//[
+        for(n=0;n<M->nu;n++){
+            int value; scanf("%d",&value);
+            getchar();//, ]
+            if(value) InsertSMatrix_OL(M,m,n,value),M->tu++;
+        }
+        getchar(); //; ]
+    }
+    getchar(); //+
+    getchar(); //[
+    for(m=0;m<M->mu;m++){
+        getchar();//[
+        for(n=0;n<M->nu;n++){
+            int value; scanf("%d",&value);
+            getchar();//, ]
+            if(value) InsertSMatrix_OL(N,m,n,value),N->tu++;
+        }
+        getchar(); //; ]
+    }
+    return OK;
+}
+
+
+Status OJ_Print_SMatrix_OL(CrossList *M){
+    printf("%c",'[');
+    int m,n;
+    for(m=0;m<M->mu;m++){
+        printf("%c",'[');
+        OLink p = M->rhead[m];
+        for(n=0;n<M->nu;n++){
+            if(p && p->j==n){
+                if(n==0) printf("%d",p->e);
+                else printf(",%d",p->e);
+                p = p->right;
+            }else{
+                if(n==0) printf("%d",0);
+                else printf(",%d",0);
+            }
+        }
+        printf("%c",']');
+        if(m<M->mu-1) printf(";");
+    }
+    printf("%c",']');
+    return OK;
+}
 
 
 
+
+void OJtest(){
+    CrossList M,N;
+    CreateSMatrix_OJ(&M,&N);
+    //PrintSMatrix_OL(&M);
+    //PrintSMatrix_OL(&N);
+    AddSMatrix_OL(&M,&N);
+    OJ_Print_SMatrix_OL(&M);
+}
+int main()
+{
+    //testCreatePrint();
+    OJtest();
+    return 0;
+}
 
 

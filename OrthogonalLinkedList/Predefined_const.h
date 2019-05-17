@@ -12,6 +12,7 @@
 #define OVERFLOW    -2
 #define UNDERFLOW   -3
 
+
 typedef int CLMElemType; //cross-linked-matrix-elemtype
 typedef int Status;
 

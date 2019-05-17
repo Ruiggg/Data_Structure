@@ -31,6 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="OJ_5.27.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Predefined_const.h" />
+		<Unit filename="SMatrix_OL.h" />
+		<Unit filename="SMatrix_OL_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
