@@ -14,6 +14,10 @@ typedef enum {True,False} Boolean;
 typedef int VertexType; //the type of nodes
 typedef int VRType; //the type of the arcs
 typedef enum {DG,DN,UDG,UDN} GraphKind;
+//0: directed graph
+//1: directed network
+//2: undirected graph
+//3: undirected network
 typedef struct {
     VertexType vexs[MAX_VERTEX_NUM];
     int arcs[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
