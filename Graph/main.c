@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "Predefined_const.h"
 #include "Graph.h"
+#include "CSTree.h"
+#include "Kosaraju.h"
 
 /*
 int main()
@@ -52,8 +54,49 @@ void testTopologicalSort(void){
         printf("\nNo loop.\n");
 }
 
+
+void testMGraph(){
+    MGraPtr G;
+    InitMGraph(&G);
+    CreateMGraph(G);
+    ShowAdjArray(*G);
+}
+
+void testALGraph(){
+    ALGraph *G;
+    InitALGraph(&G);
+    CreateALGraph(G);
+    ShowADJList(*G);
+}
+
+void testCSForest(){
+//2 9 10 AB BE AD AC BC EG DF CF FH HI
+    ALGraph *G;
+    InitALGraph(&G);
+    CreateALGraph(G);
+    ShowADJList(*G);
+    printf("\n----------------------------------------------------\n");
+    CSTree t = DFSForest(G);
+    printf("Pre: ");
+    PreOrderTraverse(t,visit);
+    printf("\nIn: ");
+    InOrderTraverse(t,visit);
+}
+
+void testKosaraju(){
+//6 8 AC CD DA AB CF EB BF FE
+//6 11 BA FA EA DF DE BD CB CF DC FB FE
+    OLGraPtr G;
+    InitOLGraph(&G);
+    CreateOLGraph(G);
+    ConnectedComponent(G);
+}
+
 int main(void){
-    testTopologicalSort();
+    //testTopologicalSort();
+    //testMGraph();
+    //testCSForest();
+    testKosaraju();
     return 0;
 }
 

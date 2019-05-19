@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1557419198 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
+1558191104 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -8,13 +8,15 @@
 
 1556205096 /home/qianyu/workspace/code/c/Graph/Predefined_const.h
 
-1557837128 /home/qianyu/workspace/code/c/Graph/Graph.h
+1558273914 /home/qianyu/workspace/code/c/Graph/Graph.h
 
-1557837098 source:/home/qianyu/workspace/code/c/Graph/main.c
+1558276146 source:/home/qianyu/workspace/code/c/Graph/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"Graph.h"
+	"CSTree.h"
+	"Kosaraju.h"
 
 1557400365 source:/home/qianyu/workspace/code/c/Graph/LinkQueue_Op.c
 	<stdio.h>
@@ -30,4 +32,22 @@
 	"Predefined_const.h"
 	"Graph.h"
 	"LinkQueue.h"
+
+1558272714 source:/home/qianyu/workspace/code/c/Graph/DFSForest.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"Graph.h"
+	"CSTree.h"
+
+1558272810 /home/qianyu/workspace/code/c/Graph/CSTree.h
+
+1558276566 source:/home/qianyu/workspace/code/c/Graph/Kosaraju.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"Graph.h"
+	"Kosaraju.h"
+
+1558275909 /home/qianyu/workspace/code/c/Graph/Kosaraju.h
 

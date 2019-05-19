@@ -7,7 +7,7 @@
 
 //------------Array(Adjacent Matrix)----------------------------
 #define INFINITY INT_MAX
-#define MAX_VERTEX_NUM 20
+#define MAX_VERTEX_NUM 30
 
 
 typedef enum {True,False} Boolean;
@@ -65,6 +65,7 @@ Status TopologicalSort(ALGraPtr g);
 
 //Orthogonal List---for directed graph
 //还以为自己多伟大，写了诗不敢递给她
+
 typedef struct ArcBox {
     int tailvex,headvex;
     struct ArcBox * hlink,*tlink;
@@ -79,6 +80,9 @@ typedef struct {
     VexNode xlist[MAX_VERTEX_NUM];
     int     vexnum,arcnum;
 }OLGraph,* OLGraPtr;
+
+
+
 Status InitOLGraph(OLGraPtr *P);
 Status CreateOLGraph(OLGraph *G);
 Status ShowOLGraph(OLGraph G);

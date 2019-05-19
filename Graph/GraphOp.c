@@ -11,6 +11,7 @@ Status InitMGraph(MGraPtr *G){
 }
 
 Status CreateMGraph(MGraph *G){
+    printf("Enter kind: ");
     scanf("%d",&(G->kind));
     switch(G->kind){
         case DG: return CreateMDG(G); break;
@@ -26,7 +27,10 @@ Status CreateMDG(MGraph *G){
     scanf("%d%d",&(G->vexnum),&(G->arcnum));
     //initialize
     int i,j;
-    for(i=0;i<G->vexnum;i++) scanf("%d",&(G->vexs[i]));
+    for(i=0;i<G->vexnum;i++) {
+        printf("Enter vex-name: ");
+        scanf("%d",&(G->vexs[i]));
+    }
     for(i=0;j<G->vexnum;i++)
         for(j=0;j<G->vexnum;j++)
             G->arcs[i][j]=0;
@@ -156,7 +160,7 @@ Status ShowADJList(ALGraph G){
         printf("%d: %c--> ",i,G.v[i].vertex);
         ArcNode* p = G.v[i].first;
         while(p){
-            printf("%d",p->adjvex);
+            printf("%d ",p->adjvex);
             p = p->nextarc;
         }
         printf("\n");
