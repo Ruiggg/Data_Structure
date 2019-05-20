@@ -92,11 +92,24 @@ void testKosaraju(){
     ConnectedComponent(G);
 }
 
+void testGDijkstra(){
+//1 7 11 a b c d e f g 0 1 15 0 2 2 0 3 12 1 4 6 2 4 8 2 5 4 3 6 3 4 6 9 5 3 5 5 6 10 6 1 4
+    MGraph *G;
+    int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
+    InitMGraph(&G);
+    CreateMGraph(G);
+    //ShowAdjArray(*G);
+    int v0 = 0;
+    ShortestPath_DIJ(G,P,v0);
+    ShowP(G,P,v0);
+}
+
 int main(void){
     //testTopologicalSort();
     //testMGraph();
     //testCSForest();
-    testKosaraju();
+    //testKosaraju();
+    testGDijkstra();
     return 0;
 }
 

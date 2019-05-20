@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1558191104 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
+1558367428 source:/home/qianyu/workspace/code/c/Graph/GraphOp.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -8,9 +8,10 @@
 
 1556205096 /home/qianyu/workspace/code/c/Graph/Predefined_const.h
 
-1558273914 /home/qianyu/workspace/code/c/Graph/Graph.h
+1558366200 /home/qianyu/workspace/code/c/Graph/Graph.h
+	<limits.h>
 
-1558276146 source:/home/qianyu/workspace/code/c/Graph/main.c
+1558367837 source:/home/qianyu/workspace/code/c/Graph/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -50,4 +51,10 @@
 	"Kosaraju.h"
 
 1558275909 /home/qianyu/workspace/code/c/Graph/Kosaraju.h
+
+1558368450 source:/home/qianyu/workspace/code/c/Graph/Dijkstra.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"Graph.h"
 

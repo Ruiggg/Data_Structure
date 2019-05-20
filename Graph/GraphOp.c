@@ -47,18 +47,23 @@ Status CreateMDG(MGraph *G){
 Status CreateMDN(MGraph *G){
     printf("Enter vexnum,arcnum: ");
     scanf("%d%d",&(G->vexnum),&(G->arcnum));
+    getchar();
     //initialize
     int i,j;
-    for(i=0;i<G->vexnum;i++) scanf("%d",&(G->vexs[i]));
-    for(i=0;j<G->vexnum;i++)
-        for(j=0;j<G->vexnum;j++)
-            G->arcs[i][j]=0;
+    for(i=0;i<G->vexnum;i++) {
+        printf("Enter vex-name: ");
+        scanf("%c",&(G->vexs[i])); getchar();
+    }
+    for(i=0;i<MAX_VERTEX_NUM;i++)
+        for(j=0;j<MAX_VERTEX_NUM;j++)
+            G->arcs[i][j]=INFINITY;
     //input the adjacent array
     for(i=0;i<G->arcnum;i++){
         int hd,tl,w;
         printf("Input an arc(i j w): ");
         scanf("%d%d%d",&hd,&tl,&w);
         G->arcs[hd][tl]=w;
+        G->arcs[hd][hd] = G->arcs[tl][tl] = 0;
     }
     return OK;
 }
@@ -102,10 +107,11 @@ Status CreateMUDN(MGraph *G){
 }
 
 Status ShowAdjArray(MGraph G){
+    printf("\n\n----------------------------\n");
     int i,j;
     for(i=0;i<G.vexnum;i++){
         for(j=0;j<G.vexnum;j++){
-            printf("%6d",G.arcs[i][j]);
+            printf("%6d  ",G.arcs[i][j]);
         }
         printf("\n");
     }

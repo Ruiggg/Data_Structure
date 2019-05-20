@@ -1,23 +1,24 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
 //Queue:
-
+#include <limits.h>
 
 
 
 //------------Array(Adjacent Matrix)----------------------------
-#define INFINITY INT_MAX
+#define INFINITY (INT_MAX/2-1)
 #define MAX_VERTEX_NUM 30
 
 
 typedef enum {True,False} Boolean;
-typedef int VertexType; //the type of nodes
+typedef char VertexType; //the type of nodes
 typedef int VRType; //the type of the arcs
 typedef enum {DG,DN,UDG,UDN} GraphKind;
 //0: directed graph
 //1: directed network
 //2: undirected graph
 //3: undirected network
+
 typedef struct {
     VertexType vexs[MAX_VERTEX_NUM];
     int arcs[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
@@ -32,6 +33,14 @@ Status CreateMDN(MGraph *G);
 Status CreateMUDG(MGraph *G);
 Status CreateMUDN(MGraph *G);
 Status ShowAdjArray(MGraph G);
+
+Status ShowP(MGraph*G, int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM],int v0);
+Status ShortestPath_DIJ(MGraph* G,int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM],int v0);
+
+
+
+
+
 
 //Adjacency List
 typedef struct ArcNode {
