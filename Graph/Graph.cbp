@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ArticulationPoint.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="CSTree.h" />
 		<Unit filename="DFSForest.c">
 			<Option compilerVar="CC" />

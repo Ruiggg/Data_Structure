@@ -16,20 +16,20 @@ Status FindArticul(ALGraph *G,Status(*visit)(ElemType e)){
     for(int i=0;i<G->vexnum;i++) visited[i]=0;
     int count = 1;  //node 0 is the 1st visited
     visited[0] = count;
+    low[0] = 1;
     if(G->v[0].first){
         int v = G->v[0].first->adjvex;
         if(DFSArticulationPoint(G,v,visit,&count,visited,low)!=OK) return ERROR;
-        if(count>=G->vexnum){
+        if(count<G->vexnum){
+            visit(G->v[0].vertex);
             ArcNode *arc = G->v[0].first->nextarc;
             for(;arc;arc=arc->nextarc){
                 int v = arc->adjvex;
                 if(visited[v]==0)
                     if(DFSArticulationPoint(G,v,visit,&count,visited,low)!=OK) return ERROR;
             }
-        }else{
-            visit(G->v[0].vertex);
         }
-    }
+    }//if
     //examineArticul(G,low,visited);
     //printf("\ncount=%d\n",count);
     return OK;

@@ -118,7 +118,7 @@ void testDijkstra_II(){
 }
 
 void testArticulation(){
-//2 8 10 HG AH AG AB AF BC CF DC CE DE
+//2 8 10 HG AH AG AB AF BC CF DC CE DE ##
     ALGraph *G;
     InitALGraph(&G);
     CreateALGraph(G);

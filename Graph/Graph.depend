@@ -11,7 +11,7 @@
 1558527605 /home/qianyu/workspace/code/c/Graph/Graph.h
 	<limits.h>
 
-1558528227 source:/home/qianyu/workspace/code/c/Graph/main.c
+1558534490 source:/home/qianyu/workspace/code/c/Graph/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -58,7 +58,7 @@
 	"Predefined_const.h"
 	"Graph.h"
 
-1558529201 source:/home/qianyu/workspace/code/c/Graph/ArticulationPoint.c
+1558534596 source:/home/qianyu/workspace/code/c/Graph/ArticulationPoint.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
