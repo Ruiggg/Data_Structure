@@ -70,7 +70,10 @@ Status DFSPath(ALGraph *G,int a,int b,char *path);
 Status DFSsearch(ALGraph *G,int start,int target,char *path,int *found,int *visited);
 //topo
 Status TopologicalSort(ALGraPtr g);
-
+//Articulation
+Status FindArticul(ALGraph *G,Status(*visit)(ElemType e));
+Status DFSArticulationPoint(ALGraph*G,int v,Status(*visit)(ElemType e),int *count,int *visited,int *low);
+Status PrintElemType(ElemType e);
 
 //Orthogonal List---for directed graph
 //还以为自己多伟大，写了诗不敢递给她

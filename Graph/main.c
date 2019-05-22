@@ -117,13 +117,23 @@ void testDijkstra_II(){
     ShowP_II(G,P,v0);
 }
 
+void testArticulation(){
+//2 8 10 HG AH AG AB AF BC CF DC CE DE
+    ALGraph *G;
+    InitALGraph(&G);
+    CreateALGraph(G);
+    printf("\n\n\n");
+    if(FindArticul(G,PrintElemType)!=OK) printf("ERROR\n");
+}
+
 int main(void){
     //testTopologicalSort();
     //testMGraph();
     //testCSForest();
     //testKosaraju();
     //testGDijkstra();
-    testDijkstra_II();
+    //testDijkstra_II();
+    testArticulation();
     return 0;
 }
 

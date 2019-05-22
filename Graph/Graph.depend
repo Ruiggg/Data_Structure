@@ -8,10 +8,10 @@
 
 1556205096 /home/qianyu/workspace/code/c/Graph/Predefined_const.h
 
-1558523326 /home/qianyu/workspace/code/c/Graph/Graph.h
+1558527605 /home/qianyu/workspace/code/c/Graph/Graph.h
 	<limits.h>
 
-1558523760 source:/home/qianyu/workspace/code/c/Graph/main.c
+1558528227 source:/home/qianyu/workspace/code/c/Graph/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -52,7 +52,13 @@
 
 1558275909 /home/qianyu/workspace/code/c/Graph/Kosaraju.h
 
-1558523450 source:/home/qianyu/workspace/code/c/Graph/Dijkstra.c
+1558524603 source:/home/qianyu/workspace/code/c/Graph/Dijkstra.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"Graph.h"
+
+1558529201 source:/home/qianyu/workspace/code/c/Graph/ArticulationPoint.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
