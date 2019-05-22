@@ -36,8 +36,8 @@ Status ShowAdjArray(MGraph G);
 
 Status ShowP(MGraph*G, int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM],int v0);
 Status ShortestPath_DIJ(MGraph* G,int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM],int v0);
-
-
+Status ShortestPath_DIJ_II(MGraph *G,int P[MAX_VERTEX_NUM],int v0);
+Status ShowP_II(MGraph *G,int P[MAX_VERTEX_NUM],int v0);
 
 
 

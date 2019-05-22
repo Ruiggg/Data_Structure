@@ -80,3 +80,74 @@ Status ShowP(MGraph*G, int P[MAX_VERTEX_NUM][MAX_VERTEX_NUM],int v0){
     return OK;
 }
 
+//P[i] = the prior node of the node i in the shortest path whose inner nodes are in S
+//P should be initialize in the function
+Status ShortestPath_DIJ_II(MGraph *G,int P[MAX_VERTEX_NUM],int v0){
+    if(v0<0 || v0>=MAX_VERTEX_NUM) return ERROR;
+    //main data structure:
+    int finish[MAX_VERTEX_NUM];     //S
+    int dist[MAX_VERTEX_NUM];       //the length from v0 to node i using nodes in S as inner nodes
+    //initialize
+    for(int i=0;i<MAX_VERTEX_NUM;i++){
+        finish[i] = False;
+        dist[i] = G->arcs[v0][i];
+        P[i] = (i==v0)?-2:(dist[i]<INFINITY)?v0:-1;
+    }
+    //do the algorithm
+    finish[v0] = True;      //add v0 to S
+    int count = 1;
+    while(count < G->vexnum){
+        //find the min-dist
+        int min_i = -1, min = INFINITY;
+        for(int i=0;i<MAX_VERTEX_NUM;i++){
+            if(finish[i]==False && dist[i]<min){
+                min_i = i;
+                min = dist[i];
+            }//if
+        }//for
+        if(min_i==-1) return ERROR;
+        //change S and dist
+        finish[min_i] = True;
+        for(int i=0;i<MAX_VERTEX_NUM;i++){
+            if(finish[i]==False && dist[i]>dist[min_i]+G->arcs[min_i][i]){
+                dist[i] = dist[min_i] + G->arcs[min_i][i];
+                P[i] = min_i;
+                //printf("\n--------------------------------\n");
+                //for(int j=0;j<G->vexnum;j++) printf("%2d",P[j]);
+            }//if
+        }//for
+
+        count++;
+    }
+
+    return OK;
+}
+
+
+Status ShowP_II(MGraph *G,int P[MAX_VERTEX_NUM],int v0){
+    printf("\n\n");
+    int simpleStack[MAX_VERTEX_NUM],top=0;
+    for(int i=0;i<MAX_VERTEX_NUM;i++){
+        if(P[i]>=0){
+            printf("Shoertest Path from %c to %c: ",G->vexs[v0],G->vexs[i]);
+            simpleStack[top++] = i;
+            for(int j=i;P[j]!=-2;j=P[j]) simpleStack[top++] = P[j];
+            //print path
+            for(--top;top>=0;top--) printf("%3c",G->vexs[simpleStack[top]]);
+            printf("\n");
+            top = 0;
+        }//if
+    }//for
+    return OK;
+}
+
+
+
+
+
+
+
+
+
+
+

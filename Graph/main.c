@@ -104,12 +104,26 @@ void testGDijkstra(){
     ShowP(G,P,v0);
 }
 
+void testDijkstra_II(){
+    //1 7 11 a b c d e f g 0 1 15 0 2 2 0 3 12 1 4 6 2 4 8 2 5 4 3 6 3 4 6 9 5 3 5 5 6 10 6 1 4
+    //1 7 12 0 1 2 3 4 5 6 0 1 2 0 3 1 1 3 3 1 4 10 2 5 5 2 0 4 3 2 2 3 4 2 3 5 8 3 6 4 4 6 6 6 5 1
+    MGraph *G;
+    int P[MAX_VERTEX_NUM];
+    InitMGraph(&G);
+    CreateMGraph(G);
+    //ShowAdjArray(*G);
+    int v0 = 0;
+    ShortestPath_DIJ_II(G,P,v0);
+    ShowP_II(G,P,v0);
+}
+
 int main(void){
     //testTopologicalSort();
     //testMGraph();
     //testCSForest();
     //testKosaraju();
-    testGDijkstra();
+    //testGDijkstra();
+    testDijkstra_II();
     return 0;
 }
 

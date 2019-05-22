@@ -35,6 +35,9 @@
 		<Unit filename="DFSForest.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Dijkstra.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Graph.h" />
 		<Unit filename="GraphOp.c">
 			<Option compilerVar="CC" />
