@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1558007112 source:/home/qianyu/workspace/code/c/String/main.c
+1558017582 source:/home/qianyu/workspace/code/c/String/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -27,7 +27,7 @@
 
 1558007087 /home/qianyu/workspace/code/c/String/HString.h
 
-1558008052 source:/home/qianyu/workspace/code/c/String/HStirng_KMP.c
+1558017592 source:/home/qianyu/workspace/code/c/String/HStirng_KMP.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
