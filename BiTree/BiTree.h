@@ -36,6 +36,11 @@ Status InOrderTraverse_NR1(BiTree T,Status(*Visit)(TElemType e));
 Status InOrderTraverse_NR2(BiTree T,Status(*Visit)(TElemType e));
 Status PostOrderTraverse_NR(BiTree T,Status(*Visit)(TElemType e));
 
+//OJ
+Status CreateBiTree_OJ_LevelTra(BiTree *T);
+Status PreOrderTraverse_NR(BiTree T);
+Status OJ_PreTra();
+
 
 //about stack
 typedef BiTree SElemType;

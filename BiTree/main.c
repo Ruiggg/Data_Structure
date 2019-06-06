@@ -3,6 +3,7 @@
 #include "Predefined_const.h"
 #include "BiTree.h"
 
+/*
 int main()
 {
     BiThrTree T,Thr;
@@ -10,10 +11,19 @@ int main()
     InOrderThreading(&Thr,T);
     //InOrderTraverse_Thr(Thr,PrintElement);
     CheckFPOSIOT(T);
-   /* BiTree T;
+    BiTree T;
     CreateBiTree(&T);
     PostOrderTraverse_NR(T,PrintElement);
     printf("\n");
-    PostOrderTraverse(T,PrintElement);*/
+    PostOrderTraverse(T,PrintElement);
     return 0;
+}
+*/
+
+int main(){
+    testOJ();
+}
+
+void testOJ(){
+    OJ_PreTra();
 }
