@@ -38,6 +38,10 @@
 		<Unit filename="GlistOp_l.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="HString.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="HString.h" />
 		<Unit filename="MPNode.h" />
 		<Unit filename="MvarPoly.c">
 			<Option compilerVar="CC" />

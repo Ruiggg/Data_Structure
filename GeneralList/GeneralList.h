@@ -3,6 +3,7 @@
 #define ATOM 0
 #define LIST 1
 #include "MPNode.h"//!!!
+#include "HString.h"
 
 typedef int Atomtype;   //int can be changed
 
@@ -30,6 +31,11 @@ GList_th getHead_GL_th(GList_th l);
 Status InsertFirst_GL_th(GList_th *l, ElemType e);
 Status DeleteFisrt_GL_th(GList_th *l, ElemType* e);
 Status DeleteNode_GL_th(GList_th* l,ElemType x);
+
+Status DeleteNode_GL_th_OJ(GList_th *l,ElemType x);
+Status DeleteNode_GL_th_OJ_recur(GList_th *l,ElemType x,GList_th *pre);
+Status Read_GList_th(GList_th *l,HString *s);
+Status PrintGL_th_OJ(GList_th l);
 
 
 //using chains storation(sub-list analysis storation)

@@ -3,6 +3,7 @@
 #include "Predefined_const.h"
 #include "MPNode.h"
 #include "GeneralList.h"
+#include "HString.h"
 /*
 int main()
 {
@@ -65,7 +66,24 @@ int main(){
 }
 */
 
+void testdeleteValue(){
+    GList_th l,t;
+    InitGlist_th(&l,1);
+    CreateTestGL_th(l);
+    PrintGL_th(l);
+    printf("\n");
+    CopyGlist_th(&t,l);
+    PrintGL_th(t);
+    puts("");
+
+
+    DeleteNode_GL_th(&t,'b');
+    PrintGL_th(t);
+    puts("");
+}
+
 int main(){
+    /*
     GList_l l,t;
     InitGlist_l(&l);
     CreateTestGL_l(l);
@@ -75,10 +93,32 @@ int main(){
     InsertFirst_GL_l(t,'g');
     PrintGL_l(t); puts("");
     DeleteNode_GL_l(t,'c');
-    PrintGL_l(t); puts("");
-
+    PrintGL_l(t); puts(""); */
+    //testdeleteValue();
     //int d = GList_l_depth(t);
     //printf("Depth of t: %d\n",d);
-
+    test_oj();
     return 0;
+}
+
+
+
+int test_oj(){
+    char x = getchar();
+    getchar();
+    HString s; HStrInit(&s); char c; int i=0;
+    while((c=getchar())!='\n'){
+        s.ch[i++] = c;
+    }
+    s.length = i;
+    GList_th g;
+
+    GList_th * l = &g;
+    Read_GList_th(l,&s);
+
+    ;
+    DeleteNode_GL_th_OJ(l,x);
+
+    PrintGL_th_OJ(*l);
+    return OK;
 }

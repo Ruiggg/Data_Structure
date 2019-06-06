@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1556959339 source:/home/qianyu/workspace/code/c/GeneralList/main.c
+1559791765 source:/home/qianyu/workspace/code/c/GeneralList/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"MPNode.h"
 	"GeneralList.h"
+	"HString.h"
 
 1555331469 /home/qianyu/workspace/code/c/GeneralList/Predefined_const.h
 
@@ -16,14 +17,15 @@
 	<stdio.h>
 	<stdlib.h>
 
-1556953472 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_ht.c
+1559791745 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_ht.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
 	"GeneralList.h"
 
-1556958433 /home/qianyu/workspace/code/c/GeneralList/GeneralList.h
+1559790750 /home/qianyu/workspace/code/c/GeneralList/GeneralList.h
 	"MPNode.h"
+	"HString.h"
 
 1556959521 source:/home/qianyu/workspace/code/c/GeneralList/GlistOp_l.c
 	<stdio.h>
@@ -31,4 +33,13 @@
 	"Predefined_const.h"
 	"GeneralList.h"
 	"MPNode.h"
+
+1559787713 source:/home/qianyu/workspace/code/c/GeneralList/HString.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"GeneralList.h"
+	"MPNode.h"
+
+1559787599 /home/qianyu/workspace/code/c/GeneralList/HString.h
 

@@ -109,17 +109,19 @@ Status CreateTestGL_th(GList_th l){
 }
 
 Status PrintGL_th(GList_th l){
+
     if(l){
         if(l->tag == ATOM){
-            printf("%2c",l->atom);
+            printf("%c",l->atom);
             return OK;
         }
-        printf(" (");
+        printf("(");
         while(l){
             PrintGL_th(l->ptr.hp);
             l = l->ptr.tp;
         }
-        printf(" )");
+        printf(")");
+
     }else{
         printf("()");
     }
@@ -213,4 +215,121 @@ Status DeleteNode_GL_th(GList_th *l,ElemType x){
     }
     return OK;
 }
+
+Status DeleteNode_GL_th_OJ(GList_th *l,ElemType x){
+    GList_th * pre = NULL;
+    DeleteNode_GL_th_OJ_recur(l,x,pre);
+    return OK;
+}
+
+
+Status DeleteNode_GL_th_OJ_recur(GList_th *l,ElemType x,GList_th *pre){
+    //delete nodes whose value is x
+    if(*l){
+
+        if((*l)->tag==LIST){
+            if((*l)->ptr.hp!=NULL){
+                if((*l)->ptr.hp->tag==ATOM && (*l)->ptr.hp->atom==x){
+
+                    (*l) = (*l)->ptr.tp;
+                    DeleteNode_GL_th_OJ_recur(l,x,NULL);
+                    //DeleteNode_GL_th_OJ_recur(&( (*l)->ptr.tp ),x,l);
+                }else{
+                    DeleteNode_GL_th_OJ_recur(&( (*l)->ptr.hp ),x,NULL);
+                    DeleteNode_GL_th_OJ_recur(&( (*l)->ptr.tp ),x,l);
+                }
+            }
+        }
+    }
+    return OK;
+}
+
+
+
+Status Read_GList_th(GList_th *l,HString *s){
+    char c = s->ch[0];
+    //printf("1:c = %c\n",c);
+    if(c=='('){
+        if(s->length == 1) return ERROR;
+        InitGlist_th(l,LIST);
+        char hc = s->ch[1];//(,char,)
+        //printf("2:hc = %c\n",hc);
+
+        if(hc=='('){
+            int index = CharAt(s,')');
+
+
+            if(index==-1) return ERROR;
+            HString subs;
+            HStrInit(&subs);
+            HStrSubStr(&subs,s,1,index);
+            Read_GList_th( &((*l)->ptr.hp),&subs );
+
+            HString s1; HStrInit(&s1);
+            s1.ch[0]='('; s1.ch[1]='\0'; s1.length = 1;
+            HString s2; HStrInit(&s2);
+            if(s->ch[index+1]==')'){
+                HStrSubStr(&s2,s,index+1,1);
+            }else{
+                if(HStrSubStr(&s2,s,index+2,s->length - index - 2)!=OK) printf("err\n");
+            }
+
+            HString t; HStrInit(&t);
+            HStrConcat(&t,&s1,&s2);
+
+            Read_GList_th( &((*l)->ptr.tp),&t );
+        }else if(hc==')'){ //end
+            (*l) = NULL;
+        }else{
+            HString ss1;
+            HStrInit(&ss1);
+            (ss1.ch)[0]=hc; (ss1.ch)[1]='\0'; ss1.length=1;
+            if(Read_GList_th( &((*l)->ptr.hp),&ss1 )!=OK) return ERROR;
+
+            if(s->length==2) return ERROR;
+
+
+            HString s1; HStrInit(&s1);
+            s1.ch[0]='('; s1.ch[1]='\0'; s1.length = 1;
+            HString s2; HStrInit(&s2);
+            HStrSubStr(&s2,s,3,s->length-3);
+            HString t; HStrInit(&t);
+            HStrConcat(&t,&s1,&s2);
+            Read_GList_th( &((*l)->ptr.tp),&t );
+        }
+    }else{
+            InitGlist_th(l,ATOM);
+            (*l)->atom = c;
+    }
+    return OK;
+}
+
+Status PrintGL_th_OJ(GList_th l){
+    //if(l) printf("tag = %d; l = %p\n",l->tag,l);
+    //else printf("l==NULL\n");
+    if(!l){
+        printf("()");
+        return OK;
+    }
+    if(l->tag==ATOM){
+        printf("%c",l->atom);
+        return OK;
+    }
+    putchar('(');
+    for(;l;l=l->ptr.tp){
+        PrintGL_th_OJ(l->ptr.hp);
+        if(l->ptr.tp!=NULL) printf(",");
+    }
+    putchar(')');
+    return OK;
+}
+
+
+
+
+
+
+
+
+
 

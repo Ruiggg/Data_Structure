@@ -157,8 +157,14 @@ Status HStrRepSubstr(HString *s,HString *t,HString *v){
     return OK;
 }
 
-
-
+//return index
+int CharAt(HString *s,char c){
+    int i=0;
+    for(;i<s->length;i++){
+        if(s->ch[i]==c) return i;
+    }
+    return -1;
+}
 
 
 
