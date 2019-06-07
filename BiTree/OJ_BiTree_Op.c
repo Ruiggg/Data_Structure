@@ -55,6 +55,53 @@ Status CreateBiTree_OJ_LevelTra(BiTree *T){
 }
 
 
+Status CreateBiTree_OJ_LevelTra_ch(BiTree *T){
+    int e,c;
+    if(scanf("%c",&e)==1 && e!='n'){
+        BiTree p = (BiTree)malloc(sizeof(BiTNode));
+        if(!p) exit(OVERFLOW);
+        p->data = e; p->lchild = NULL; p->rchild = NULL;
+        queue[tail++] = p;
+        (*T) = p;
+        c = getchar();
+        if(c=='\n') {return OK;}
+    }else{
+        while((c=getchar())!=',');
+        (*T) = NULL;
+        return OK;
+    }
+    while(tail!=head){
+        BiTree q = queue[head++];
+        //left son
+        if(scanf("%c",&e)==1 && e!='n'){
+            BiTree p1 = (BiTree)malloc(sizeof(BiTNode));
+            if(!p1) exit(OVERFLOW);
+            p1->data = e; p1->lchild = NULL; p1->rchild = NULL;
+            queue[tail++] = p1;
+            q->lchild = p1;
+            c = getchar();
+            if(c=='\n') {return OK;}
+        }else{
+            while((c=getchar())!=',');
+            q->lchild = NULL;
+        }
+        //right son
+        if(scanf("%c",&e)==1 && e!='n'){
+            BiTree p2 = (BiTree)malloc(sizeof(BiTNode));
+            if(!p2) exit(OVERFLOW);
+            p2->data = e; p2->lchild = NULL; p2->rchild = NULL;
+            queue[tail++] = p2;
+            q->rchild = p2;
+            c = getchar();
+            if(c=='\n') {return OK;}
+        }else{
+            while((c=getchar())!=',');
+            q->rchild = NULL;
+        }
+    }
+    return OK;
+}
+
 Status PreOrderTraverse_NR(BiTree T){
     if(!T) return ERROR;
     int set[30],index=0;
@@ -87,6 +134,7 @@ Status PreOrderTraverse_NR(BiTree T){
 
 Status print(TElemType e){
     printf("%d,",e);
+    return OK;
 }
 
 Status OJ_PreTra(){
@@ -97,9 +145,23 @@ Status OJ_PreTra(){
     return OK;
 }
 
-
-
-
+Status InOrderTraverse_OJ(BiTree T,Status(*Visit)(TElemType e),int tag){
+    if(T){
+        if(tag) putchar('(');
+        int thistag = ( (((T->data=='*')||(T->data=='\\'))&&(T->lchild)&&((T->lchild->data=='+')||(T->lchild->data=='-'))) )?1:0;
+        if(InOrderTraverse_OJ(T->lchild,Visit,thistag)){
+            if(Visit(T->data)){ //don't forget this step
+                thistag = ( (T->data=='-'&&T->rchild&&T->rchild->data=='-')||(((T->data=='*')||(T->data=='\\'))&&(T->rchild)&&((T->rchild->data=='+')||(T->rchild->data=='-'))) )?1:0;
+                if(InOrderTraverse_OJ(T->rchild,Visit,thistag)){
+                    if(tag) putchar(')');
+                    return OK;
+                }
+            }
+        }
+        return ERROR;
+    }
+    return OK;
+}
 
 
 

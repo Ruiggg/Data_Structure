@@ -25,5 +25,8 @@ int main(){
 }
 
 void testOJ(){
-    OJ_PreTra();
+    //OJ_PreTra();
+    BiTree T;
+    CreateBiTree_OJ_LevelTra_ch(&T);
+    InOrderTraverse_OJ(T,PrintElement,0);
 }

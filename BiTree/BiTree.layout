@@ -2,53 +2,38 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="BiTree_Op.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="403" topLine="4" />
+			<Cursor1 position="460" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="StackInBiTree.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="849" topLine="29" />
-		</Cursor>
-	</File>
-	<File name="BiTree.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1446" topLine="39" />
-		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+			<Collapse line="30" />
+		</Folding>
 	</File>
 	<File name="Predefined_const.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="73" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="OJ_BiTree_Op.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2430" topLine="91" />
+			<Cursor1 position="403" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="BiTree_Op.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="BiTree.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2081" topLine="6" />
+			<Cursor1 position="488" topLine="14" />
 		</Cursor>
-		<Folding>
-			<Collapse line="7" />
-			<Collapse line="25" />
-			<Collapse line="30" />
-			<Collapse line="41" />
-			<Collapse line="52" />
-			<Collapse line="63" />
-			<Collapse line="80" />
-			<Collapse line="95" />
-			<Collapse line="122" />
-			<Collapse line="142" />
-			<Collapse line="158" />
-			<Collapse line="177" />
-			<Collapse line="194" />
-			<Collapse line="210" />
-			<Collapse line="222" />
-			<Collapse line="236" />
-			<Collapse line="249" />
-		</Folding>
+	</File>
+	<File name="OJ_BiTree_Op.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1504" topLine="43" />
+		</Cursor>
+	</File>
+	<File name="StackInBiTree.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="849" topLine="29" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
