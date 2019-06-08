@@ -21,7 +21,7 @@ int main()
 */
 
 int main(){
-    testOJ();
+    OJ_addThrInOder();
 }
 
 void testOJ(){

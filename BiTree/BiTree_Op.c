@@ -127,6 +127,7 @@ Status InOrderThreading(BiThrTree *Thrt,BiThrTree T){
     //Thrt is the header
     //Thrt->lchild = T;
     BiThrTree pre;
+    (*Thrt)->data = 0;
     (*Thrt)->LTag = Link;
     (*Thrt)->RTag = Thread;
     (*Thrt)->rchild = *Thrt;  //At the beginning, thrt's success is itself
@@ -142,6 +143,7 @@ Status InOrderThreading(BiThrTree *Thrt,BiThrTree T){
 
 void InThreading(BiThrTree p, BiThrTree *pre){
     if(p){
+        p->LTag = p->RTag = Link;
         InThreading(p->lchild,pre);
         if(!p->lchild){
             p->lchild = *pre;
@@ -163,7 +165,7 @@ Status InOrderTraverse_Thr(BiThrTree T,Status(*Visit)(TElemType e)){
     while(p!=T){
         while(p->LTag==Link) p=p->lchild;  //the "while" stops when p has no left child(LTag==Link means lchild is null)
         if(!Visit(p->data)) return ERROR;      //so it's time to visit it
-        while(p->LTag==Thread && p->rchild!=T){ //and traverse the InOrder-Chain if any
+        while(p->RTag==Thread && p->rchild!=T){ //and traverse the InOrder-Chain if any
             p=p->rchild;
             if(!Visit(p->data)) return ERROR;
         }//while ends when the node's right son is not null
