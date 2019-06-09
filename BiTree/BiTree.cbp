@@ -35,6 +35,9 @@
 		<Unit filename="BiTree_Op.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="OJ_2_Op.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="OJ_BiTree_Op.c">
 			<Option compilerVar="CC" />
 		</Unit>

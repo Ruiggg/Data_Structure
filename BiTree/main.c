@@ -21,12 +21,15 @@ int main()
 */
 
 int main(){
-    OJ_addThrInOder();
+    //OJ_addThrInOder();
+    testOJ();
 }
 
 void testOJ(){
     //OJ_PreTra();
+    /**
     BiTree T;
     CreateBiTree_OJ_LevelTra_ch(&T);
-    InOrderTraverse_OJ(T,PrintElement,0);
+    InOrderTraverse_OJ(T,PrintElement,0);*/
+    CreateAndPostTra();
 }

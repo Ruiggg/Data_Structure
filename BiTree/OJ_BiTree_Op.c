@@ -108,7 +108,6 @@ Status CreateBiTree_OJ_LevelTra_more(BiThrTree *T){
     return OK;
 }
 
-
 Status CreateBiTree_OJ_LevelTra_ch(BiTree *T){
     BiTree queue[QUEUESIZE];
     int head = 0, tail = 0;
@@ -171,8 +170,6 @@ Status InOrderTraverse_Thr2(BiThrTree T,Status(*Visit)(TElemType e)){
     }
     return OK;
 }
-
-
 
 Status PreOrderTraverse_NR(BiTree T){
     if(!T) return ERROR;

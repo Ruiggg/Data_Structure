@@ -43,6 +43,10 @@ Status PreOrderTraverse_NR(BiTree T);
 Status OJ_PreTra();
 Status InOrderTraverse_OJ(BiTree T,Status(*Visit)(TElemType e),int tag);
 Status OJ_addThrInOder();
+Status CreateAndPostTra();
+
+
+
 
 
 //about stack

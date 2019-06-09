@@ -7,9 +7,9 @@
 
 1555859305 /home/qianyu/workspace/code/c/BiTree/Predefined_const.h
 
-1559962751 /home/qianyu/workspace/code/c/BiTree/BiTree.h
+1560050524 /home/qianyu/workspace/code/c/BiTree/BiTree.h
 
-1559962846 source:/home/qianyu/workspace/code/c/BiTree/main.c
+1560050552 source:/home/qianyu/workspace/code/c/BiTree/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
@@ -21,7 +21,13 @@
 	"Predefined_const.h"
 	"BiTree.h"
 
-1559969120 source:/home/qianyu/workspace/code/c/BiTree/OJ_BiTree_Op.c
+1560049341 source:/home/qianyu/workspace/code/c/BiTree/OJ_BiTree_Op.c
+	<stdio.h>
+	<stdlib.h>
+	"Predefined_const.h"
+	"BiTree.h"
+
+1560050956 source:/home/qianyu/workspace/code/c/BiTree/OJ_2_Op.c
 	<stdio.h>
 	<stdlib.h>
 	"Predefined_const.h"
