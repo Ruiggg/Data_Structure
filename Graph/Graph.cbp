@@ -53,6 +53,9 @@
 		<Unit filename="LinkQueue_Op.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="OJ.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Predefined_const.h" />
 		<Unit filename="TopoSort.c">
 			<Option compilerVar="CC" />

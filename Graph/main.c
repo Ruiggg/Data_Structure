@@ -133,7 +133,13 @@ int main(void){
     //testKosaraju();
     //testGDijkstra();
     //testDijkstra_II();
-    testArticulation();
+    //testArticulation();
+    ALGraPtr G;
+    InitALGraph(&G);
+    G->kind = 0;
+    int nodes[100];
+    CreateALGraph_Directed_OJ(G,nodes);
+    PrintAdjGraph(G,nodes);
     return 0;
 }
 

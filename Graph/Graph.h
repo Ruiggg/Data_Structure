@@ -42,6 +42,8 @@ Status ShowP_II(MGraph *G,int P[MAX_VERTEX_NUM],int v0);
 
 
 
+
+
 //Adjacency List
 typedef struct ArcNode {
     int adjvex; //The node that the arc points(store its position)
@@ -74,6 +76,14 @@ Status TopologicalSort(ALGraPtr g);
 Status FindArticul(ALGraph *G,Status(*visit)(ElemType e));
 Status DFSArticulationPoint(ALGraph*G,int v,Status(*visit)(ElemType e),int *count,int *visited,int *low);
 Status PrintElemType(ElemType e);
+//OJ
+Status OJ_7_14(void);
+Status CreateALGraph_Directed_OJ(ALGraph *G,int *nodes);
+Status PrintAdjGraph(ALGraPtr G,int *n);
+
+
+
+
 
 //Orthogonal List---for directed graph
 //还以为自己多伟大，写了诗不敢递给她
