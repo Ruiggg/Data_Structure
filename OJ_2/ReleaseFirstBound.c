@@ -31,49 +31,104 @@ Status BuildList(WORD **pav){
     while((tag=getchar())=='0'||tag=='1'){
         p = (WORD*)malloc(sizeof(WORD));
         if(!p) exit(OVERFLOW); p->tag = tag-'0';
-        getchar(); scanf("%d",&(p->rlink)); getchar(); scanf("%d",&(p->size)); getchar();
+        getchar(); scanf("%d",&(p->uplink)); getchar(); scanf("%d",&(p->size)); getchar();
         if(pre){
             pre->rlink = p;
             p->llink = pre;
-        }else
+        }else{
             (*pav) = p;
+        }
         pre = p;
+        //printf("\n* %d %d %d *\n",p->tag,p->uplink,p->size);
     }
-    getchar();
+    //getchar();
     pre->rlink = (*pav);
     (*pav)->llink = pre;
     return OK;
 }
 
 WORD* ReadaRow(){
-    tag = getchar();
-    if(tag=='\n') tag=getchar();
+    char tag = getchar(); //printf("ctag = %d\n",tag-' ');
+    if(tag=='\n') tag=getchar(); //printf("ctag = %d\n",tag);
     if(tag!='0' && tag!='1'){
         return NULL;
     }
     WORD * p = (WORD*)malloc(sizeof(WORD));
     if(!p) exit(OVERFLOW); p->tag = tag-'0';
-    getchar(); scanf("%d",&(p->rlink)); getchar(); scanf("%d",&(p->size)); //getchar();
+    getchar(); scanf("%d",&(p->uplink)); getchar(); scanf("%d",&(p->size)); //getchar();
     return p;
 }
 
 Status Realease(WORD *pav){
-    WORD * tem = pav;
+    //WORD * tem = pav;
+    WORD * pre = pav->llink;
+    WORD * cur = pav;
+    WORD * toberelease;
 
+    while((toberelease=ReadaRow())!=NULL){
+        //printf("%d %d %d\n",toberelease->tag,toberelease->uplink,toberelease->size);
+
+        int size = toberelease->size;
+        int addr = toberelease->uplink;
+
+        while(cur->uplink < addr){
+            cur=cur->rlink; pre=pre->rlink;
+            if(cur==pav) break;
+        }
+        //printf("%p\n",&cur);
+        //printf("cur->size = %d\n",cur->size);
+        if(cur->uplink==addr+size && pre->uplink+pre->size==addr){
+            pre->rlink = cur->rlink;
+            cur->rlink->llink = pre;
+            pre->size += (size+cur->size);
+        }else if(cur->uplink==addr+size){
+            cur->size += size;
+            cur->uplink = addr;
+        }else if(pre->uplink+pre->size==addr){
+            pre->size += size;
+        }else{
+            toberelease->tag = 0;
+            toberelease->llink = pre;
+            toberelease->rlink = cur;
+            pre->rlink = toberelease;
+            cur->llink = toberelease;
+        }
+        cur = pav;
+        pre = pav->llink;
+    }
     return OK;
 }
 
+Status Show(WORD * pav){
+    WORD * cur = pav;
+    do{
+        printf("%d %d %d\n",cur->tag,cur->uplink,cur->size);
+        cur = cur->rlink;
+    }while(pav!=cur);
+    return OK;
+}
 
 int main(){
     WORD * pav;
     BuildList(&pav);
-    printf("1done\n");
+    //printf("\ndone %d %d\n",pav->tag,pav->rlink->size);
+    Realease(pav);
+    Show(pav);
+    return 0;
 }
 
 
 
 
+/*
+0 10000 15000
+0 31000 8000
+0 59000 41000
 
+1 30000 1000
+1 40000 2000
+
+*/
 
 
 

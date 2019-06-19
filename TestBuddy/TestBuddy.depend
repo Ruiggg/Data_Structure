@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1560950540 source:/home/qianyu/workspace/code/c/TestBuddy/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+
