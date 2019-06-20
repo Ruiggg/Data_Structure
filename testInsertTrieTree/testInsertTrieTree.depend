@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1561014742 source:/home/qianyu/workspace/code/c/testInsertTrieTree/main.c
+	<stdio.h>
+	<stdlib.h>
+

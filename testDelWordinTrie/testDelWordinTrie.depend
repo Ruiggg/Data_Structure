@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1561016930 source:/home/qianyu/workspace/code/c/testDelWordinTrie/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
