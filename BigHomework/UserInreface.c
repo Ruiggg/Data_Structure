@@ -3,7 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 #include "DEF.h"
-
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 enum functions {Consult,AddCity,DeleteCity,AddTrainRoute,DeleteTrainRoute,AddPlaneRoute,DeletePlaneRoute,ChangeTrain,
                 ChangePlane,Exit};
@@ -42,7 +43,7 @@ int OperationOfCommand(char * command){
     int lenOfOpCode = ReadWord(OpCode,command,0);   //从command命令里读取第一个单词
     if(strcmp(OpCode,"find")==0){
         return Consult;
-    }else if(strcmp(OpCode,"exit")==0){
+    }else if(strcmp(OpCode,"exit")==0 || strcmp(OpCode,"quit")==0 || strcmp(OpCode,"q")==0){
         return Exit;
     }else if(strcmp(OpCode,"add")==0){
         char OpFunct[MAX_CMD_LEN/2];
@@ -96,10 +97,27 @@ int ReadFunct(char *command,int functPos){
     else return funct[0]-'0';
 }
 
-Status UserInterface(void){
+int ReadTime(char *command,int pos,int *time){
+    char T[10];
+    int retpos = ReadWord(T,command,pos);
+    printf("T = %s\n",T);
+    int i = 0;
+    int t = 0;
+    for(;T[i]!='\0';i++){
+        if(T[i]>='0'&&T[i]<='9'){
+            t = t*10 + T[i]-'0';
+        }
+    }
+    (*time) = t;
+    return retpos;
+}
 
+
+Status UserInterface(void){
+    printf(ANSI_COLOR_GREEN "Welcome to National Traffic Consult System\n" ANSI_COLOR_RESET);
     while (1){
-        printf("National Traffic Consult >> ");
+        printf(ANSI_COLOR_GREEN "National Traffic Consult >> " ANSI_COLOR_RESET);
+
         char command[MAX_CMD_LEN];
         //读一行命令
         ReadLine(command);
@@ -114,15 +132,17 @@ Status UserInterface(void){
             int startPos = ReadDest(dest,command);
             int functPos = ReadWord(start,command,startPos);
             functOfConsult = ReadFunct(command,functPos);
-            consultPath(dest,start,functOfConsult); //输出由该函数内部处理
+            int succ = consultPath(dest,start,functOfConsult); //输出由该函数内部处理
+            if(!succ) printf(">> Failed to consult.\n");
             break;
         }
         case Exit: printf(">> Exiting National Traffic Consult ...\n"); return OK; break;
         case AddCity:{
             char dest[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int IfExist = addCity(dest); //添加一个城市，若存在，返回1
-            if(IfExist==1) printf(">> Add City failed: %s has existed.\n",dest);
+
+            int succ = addCity(dest);
+            if(succ==0) printf(">> Add City failed.\n",dest);
             else printf(">> Add City successfully.\n");
             break;
         }
@@ -130,23 +150,39 @@ Status UserInterface(void){
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            addPlaneRoute(dest,start);
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = addPlaneRoute(dest,start,startTime,endTime);
+            if(succ) printf(">> Add Plane Route successfully.\n");
+            else printf(">> Add Plane Route failed.\n");
             break;
         }
         case AddTrainRoute:{
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            addTrainRoute(dest,start);
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = addTrainRoute(dest,start,startTime,endTime);
+            if(succ) printf(">> Add Train Route successfully.\n");
+            else printf(">> Add Train Route failed.\n");
             break;
         }
         case DeleteCity:{
             char dest[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int notExist = deleteCity(dest); //一个城市，若不存在，返回-1
-            if(notExist!=-1) printf(">> Delete City failed: %s does not exist.\n",dest);
+            int succ = deleteCity(dest);
+            if(succ==0) printf(">> Delete City failed.\n",dest);
             else printf(">> Delete City successfully.\n");
             break;
         }
@@ -154,32 +190,64 @@ Status UserInterface(void){
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            deleteTrainRoute(dest,start);
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = deleteTrainRoute(dest,start,startTime,endTime);
+            if(succ) printf(">> Delete Train Route successfully.\n");
+            else printf(">> Delete Train Route failed.\n");
             break;
         }
         case DeletePlaneRoute:{
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            deletePlaneRoute(dest,start);
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = deletePlaneRoute(dest,start,startTime,endTime);
+            if(succ) printf(">> Delete Plane Route successfully.\n");
+            else printf(">> Delete Plane Route failed.\n");
             break;
         }
         case ChangeTrain:{
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            changeTrain(dest,start);    //该函数继续与用户交互询问具体信息
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = changeTrain(dest,start,startTime,endTime);    //该函数继续与用户交互询问具体信息
+            if(succ) printf(">> Change Train successfully.\n");
+            else printf(">> Change Train failed.\n");
             break;
         }
         case ChangePlane:{
             char dest[MAX_CITY_SIZE];
             char start[MAX_CITY_SIZE];
             int startPos = ReadDest(dest,command);
-            int functPos = ReadWord(start,command,startPos);
-            changePlane(dest,start);    //该函数继续与用户交互询问具体信息
+            int startTimePos = ReadWord(start,command,startPos);
+
+            int startTime;
+            int endTimePos = ReadTime(command,startTimePos,&startTime);
+            int endTime;
+            ReadTime(command,endTimePos,&endTime);
+
+            int succ = changePlane(dest,start,startTime,endTime);    //该函数继续与用户交互询问具体信息
+            if(succ) printf(">> Change Plane successfully.\n");
+            else printf(">> Change Plane failed.\n");
             break;
         }
         default: continue; //break;

@@ -4,16 +4,16 @@
 	<stdlib.h>
 	"DEF.h"
 
-1561046103 /home/qianyu/workspace/code/c/BigHomework/DEF.h
+1561102045 /home/qianyu/workspace/code/c/BigHomework/DEF.h
 
-1561047767 source:/home/qianyu/workspace/code/c/BigHomework/testFunctions.c
+1561102581 source:/home/qianyu/workspace/code/c/BigHomework/testFunctions.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"DEF.h"
 
-1561047854 source:/home/qianyu/workspace/code/c/BigHomework/UserInreface.c
+1561102430 source:/home/qianyu/workspace/code/c/BigHomework/UserInreface.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
