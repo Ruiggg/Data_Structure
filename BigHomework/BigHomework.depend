@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1561045243 source:/home/qianyu/workspace/code/c/BigHomework/main.c
+	<stdio.h>
+	<stdlib.h>
+	"DEF.h"
+
+1561046103 /home/qianyu/workspace/code/c/BigHomework/DEF.h
+
+1561047767 source:/home/qianyu/workspace/code/c/BigHomework/testFunctions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"DEF.h"
+
+1561047854 source:/home/qianyu/workspace/code/c/BigHomework/UserInreface.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"DEF.h"
+
