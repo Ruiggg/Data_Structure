@@ -63,26 +63,26 @@ Status myqsort(int *A,int len){
             continue;
         }
         int key = A[end];
-        int begining = start;
+        int beginning = start;
         int ending = end;
-        while(begining < ending){
-            while(begining<ending && A[begining]<=key) begining++;
-            while(ending>begining && A[ending]>=key) ending--;
-            if(begining!=ending) Swap(A,begining,ending);
+        while(beginning < ending){
+            while(beginning<ending && A[beginning]<=key) beginning++;
+            while(ending>beginning && A[ending]>=key) ending--;
+            if(beginning!=ending) Swap(A,beginning,ending);
         }
-        if(begining!=end) Swap(A,begining,end);
+        if(beginning!=end) Swap(A,beginning,end);
     //printf("ddd  %d\n",A[0]);
-        int len1 = begining-start;
-        int len2 = end-begining;
+        int len1 = beginning-start;
+        int len2 = end-beginning;
         if(len1<len2){
-            stack[top++] = begining+1;
+            stack[top++] = beginning+1;
             stack[top++] = end;
             stack[top++] = start;
-            stack[top++] = begining-1;
+            stack[top++] = beginning-1;
         }else{
             stack[top++] = start;
-            stack[top++] = begining-1;
-            stack[top++] = begining+1;
+            stack[top++] = beginning-1;
+            stack[top++] = beginning+1;
             stack[top++] = end;
         }
     }
